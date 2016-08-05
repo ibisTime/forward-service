@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+<title>系统账户资金明细</title>
+<#include 'layout/resources.html'/>
+<script type="text/javascript" src="${resourceUrl}/resources/account/js/sys-account-detail2.js?version=${version}"></script>
+</head>
+<body>
+    <#include 'layout/hidden_ares.html'/>
+    <input type="hidden" id="accountNumberSearch"/>
+	<div class="place">
+    	<span>位置：</span>
+	    <ul>
+	    	<li>主账户管理</li>
+	    	<li>系统账户</li>
+	    	<li>资金明细</li>
+   		</ul>
+    </div>
+    <div class="form-body">
+		<div id ="accountJour">
+			<!-- 搜索表单 -->
+	    	<form class="search-form">
+	        	<ul>
+		            <li><label>业务类型</label>
+		            	<select id="bizTypeSearch">
+		            	</select>
+		            </li>
+		            <li><label>相关单号</label><input type="text" id="refNoSearch"/></li>
+		            <li><label>产生时间起</label><input id="dateStartSearch" class="lay-input" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/></li>
+		            <li><label>产生时间止</label><input id="dateEndSearch" class="lay-input" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/></li>
+		            <li>
+		                <input id="searchBtn" type="button" class="btn" value="查询" />
+		                <input type="reset" class="btn" value="重置" />
+		            </li>
+	        	</ul>
+	    	</form>
+		    <!-- 表格 -->
+		    <table id="jourTableList"></table>
+		</div>
+	</div>
+</body>
+</html>

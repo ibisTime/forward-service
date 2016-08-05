@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+<title>充值审批</title>
+<#include 'layout/resources.html'/>
+<!-- js脚本 -->
+<script type="text/javascript" src="${resourceUrl}/resources/common/js/ajaxfileupload.js?version=${version}"></script>
+<script type="text/javascript" src="${resourceUrl}/resources/account/js/withdrawl-check.js?version=${version}"></script>
+</head>
+<body>
+    <#include 'layout/hidden_ares.html'/>
+    <div class="place">
+      	<span>位置</span>
+      	<ul>
+      		<li>主账户管理</li>
+      		<li>审批订单</li>
+      		<li>充值申请</li>
+      	</ul>
+    </div>
+    <form id="jsForm" >
+    	<div class="form-body">
+    		<div class="form-title"><span>申请信息</span></div>
+    		<ul class="form-info">
+    			<li><label>账号:</label><span id="accountNumber"></span></li>
+    			<li><label>取现账户类型:</label><span  id="toType" ></span></li>
+    			<li><label>取现账户:</label><span id="toCode"></span></li>
+    			<li><label><b>*</b>取现积分:</label><span id="amount"></span></li>
+    			<li><label><b>*</b>审批意见:</label><span id="approveResult"></span></li>
+    			<li><label><b>*</b>审批意见说明:</label><span id="approveNote"></span></li>
+    			<li><input type="button" id="backBtn" class="btn margin-left-20" value="返回"/></li>
+    		</ul>
+    	</div>
+    </form>
+</body>
+</html>

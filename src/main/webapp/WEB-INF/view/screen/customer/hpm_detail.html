@@ -1,0 +1,43 @@
+<#include 'layout/config.html' />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+<title>货品商详情</title>
+<#include 'layout/resources.html'/>
+<script type="text/javascript" src="${resourceUrl}/resources/customer/js/hpm_detail.js?version=${version}"></script>
+</head>
+<body>
+    <#include 'layout/hidden_ares.html'/>
+    <!-- 导航 -->
+	<div class="place">
+    	<span>位置：</span>
+	    <ul>
+	    	<li>货品管理</li>
+	    	<li>货品商入驻管理</li>
+	    	<li id="operContent">货品商详情</li>
+   		</ul>
+    </div>
+    <!-- 表单 -->
+    <form id="jsForm">
+	    <div class="form-body">
+	    <div class="form-title"><span>货品商详情</span></div>
+		    <ul class="form-info">
+ 		    	<li><label>登录名:</label><span  id="loginName" ></span></li>
+ 		    	<li><label>手机号:</label><span id="mobile"></span></li>
+ 		    	<li><label>证件类型:</label><span id="idKind" /></li>
+			    <li><label>证件号:</label><span id="idNo" ></span></li>
+			    <li><label>真实姓名:</label><span id="realName" ></span></li>
+			    <li><label>推荐人:</label><span id="userReferee" ></span></li>
+			    <li><label>备注:</label><span id="remark" ></span></li>
+			    <li><label>pdf:</label><span id="pdf"></span><img src="" id="img" width="180" height="180"></img></li>
+			    <li>
+			    <input id="backBtn" type="button" class="btn margin-left-20" value="返回"/>
+			    </li>
+			</ul>
+	    </div>
+    </form>
+</body>
+</html>

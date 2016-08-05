@@ -1,0 +1,40 @@
+<#include 'layout/config.html' />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+<title></title>
+<#include 'layout/resources.html'/>
+<script type="text/javascript" src="${resourceUrl}/resources/product/js/price-edit.js?version=${version}"></script>
+</head>
+<body>
+    <#include 'layout/hidden_ares.html'/>
+    <!-- 导航 -->
+	<div class="place">
+    	<span>位置：</span>
+    	<ul>
+   		</ul>
+    </div>
+    <!-- 表单 -->
+    <form id="jsForm">
+	    <div class="form-body">
+	    <div class="form-title"><span>货品信息</span></div>
+		    <ul class="form-info">
+		    	<li style="display:none;"><label></label><span id="code" ></span></li>
+		        <li><label>分销商:</label><span id="toLevel" ></span></li>
+		        <li><label>货品名称:</label><span id="modelName" ></span></li>
+		        <li><label><b>*</b>数量:</label><input type="text" id="quantity" name="quantity" class="control-def"/></li>
+		        <li><label><b>*</b>价格（积分数）:</label><input type="text" id="price" name="price" class="control-def"/></li>
+ 		    	<li><label><b></b>备注:</label><input type="text" id="remark" name="remark" class="control-def"/></li>
+		    </ul>
+			<li>
+			    <input id="subBtn" type="button" class="btn margin-left-100" value="保存"/>
+			    <input id="backBtn" type="button" class="btn margin-left-20" value="返回"/>
+			</li>
+			
+	    </div>
+    </form>
+</body>
+</html>

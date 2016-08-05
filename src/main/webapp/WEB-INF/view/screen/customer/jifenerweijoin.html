@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+<title>客户信息</title>
+<#include 'layout/resources.html'/>
+<script type="text/javascript" src="${resourceUrl}/resources/common/js/qrcode.js"></script>
+<script type="text/javascript" src="${resourceUrl}/resources/customer/js/jifenerweijoin.js?version=${version}"></script>
+</head>
+<body>
+    <#include 'layout/hidden_ares.html'/>
+	<div class="place">
+    	<span>位置：</span>
+	    <ul>
+	    	<li>客户管理</li>
+	    	<li>客户查询</li>
+	    	<li>客户详情</li>
+   		</ul>
+    </div>
+    <div class="form-body">
+	    <div id="usual1" class="usual"> 
+		    <div class="itab">
+			  	<ul> 
+				    <!-- <li><a href="javascript:void(0)">个人银行卡</a></li>  -->
+			  	</ul>
+		    </div>
+		</div>
+		<div id ="customer" class="tabson">
+			<div class="form-title"><span></span></div>
+	   		<ul class="form-info">
+			    <li style="display:none;"><input id="userId" name="userId"/></li>
+			    
+			    <div class="col-md-4"><div></div>二维码</div><div id="qrcode"></div>
+ 					<input style="display: none;" id="downloadBtn" type="button" class="btn margin-top-10" value="下载"/>
+ 				</div>
+ 				<div><b style="margin-left:37%;">【扫一扫，立即成为积分商】</b></div>
+ 				<li><input id="subBtn" type="button" class="btn margin-left-100" value="点击打印" style="margin-left:39%; margin-top:3%;"/></li>
+		    </ul>
+	    </div>
+	    
+		<div class="tabson">
+		    <table id="bankTableList"></table>
+		    
+		</div>
+	</div>
+	<br/>
+</body>
+</html>
