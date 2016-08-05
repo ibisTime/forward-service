@@ -29,9 +29,9 @@ $(function() {
 		},
 		messages: {
 			amount: {
-				required: "请输入金额",
-				number:"金额请输入数字",
-				maxlength: jQuery.format("金额不能大于{0}个字符")
+				required: "请输入积分",
+				number:"积分请输入数字",
+				maxlength: jQuery.format("积分不能大于{0}个字符")
 			},
 			remark: {
 				required: "请输入备注",

@@ -32,6 +32,7 @@ function doSuccessMenuBack(res){
             $(".nav").append("<li><a id=\"menu"+i+"\" href=\"javascript:void(0)\" onclick=\"initLefMenu('"+item.code+"');return false;\" target=\"leftFrame\"><img src=\""+$("#basePath").val()+"/resources/security/images/icon01.png\" title=\""+item.name + "\" /><h2>"+item.name+"</h2></a></li>");
         });
 		initLefMenu(firstMenuCode);
+		$(".nav").find('a:first').addClass('selected');
 		
 		//顶部导航切换
 		$(".nav li a").click(function(){

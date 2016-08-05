@@ -7,23 +7,23 @@ $(function(){
 	queryTableData();
 	
 	//详情绑定事件
-	$('#detailBtn').click(function() {
+	$('#moneydetailBtn').click(function() {
 		var selRecords = $('#tableList').bootstrapTable('getSelections')
 		if(selRecords.length <= 0){
 			alert("请选择记录");
 			return;
 		}
-		window.location.href = $("#basePath").val()+"/customer/customer_detail.htm?userId="+selRecords[0].userId;
+		window.location.href = $("#basePath").val()+"/customer/account.htm?userId="+selRecords[0].userId;
 	});
 	
 	// 查询事件绑定
 	$('#searchBtn').click(function() {
-		$('#tableList').bootstrapTable('refresh',{url: $("#basePath").val()+"/customer/queryPage"});
+		$('#tableList').bootstrapTable('refresh',{url: $("#basePath").val()+"/customer/huoyuanPage"});
 	});
 	
 	//代注册
 	$('#replaceAddBtn').click(function() {
-		location.href = $("#basePath").val()+"/customer/customer_replaceadd.htm";
+		location.href = $("#basePath").val()+"/customer/huoyuan_replaceadd.htm";
 	});
 	
 	//表格初始化
@@ -47,12 +47,6 @@ $(function(){
 				valign : 'middle',
 				sortable : false
 		    },{
-				field : 'userReferee',
-				title : '积分商',
-				align : 'left',
-				valign : 'middle',
-				sortable : false
-		    },{
 				field : 'updateDatetime',
 				title : '更新时间',
 				align : 'left',
@@ -70,7 +64,7 @@ $(function(){
 		
 		$('#tableList').bootstrapTable({
 			method : "get",
-			url : $("#basePath").val()+"/customer/queryPage",
+			url : $("#basePath").val()+"/customer/huoyuanPage",
 			height : $(window).height() - 180,
 			striped : true,
 			clickToSelect : true,

@@ -8,8 +8,6 @@ $(function() {
 			$("#productCode").html(html);
 		}
 	});
-	
-	
 	//获取菜单URL入参
 	var code = getQueryString("code");
 	//新增修改判断

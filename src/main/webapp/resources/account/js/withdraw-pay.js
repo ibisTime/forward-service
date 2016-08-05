@@ -68,6 +68,8 @@ function doGetDetailBack(res){
 			$("#mobile").html(result.mobile);
 			$("#realName").html(result.realName);
 			$("#accountNumber").html(result.accountNumber);
+			$("#toBelong").html(result.toBelong);
+			$("#bankcardNo").html(result.toCode);
 			$("#status").html(Dict.getName('withdraw_status', result.status));
 			$("#amount").html(moneyFormat(result.amount,2));
 			$("#createDatetime").html(dateFormat(result.createDatetime,'yyyy-MM-dd HH:mm:ss'));

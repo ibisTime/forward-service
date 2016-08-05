@@ -55,7 +55,7 @@ function doGetDetailBack(res){
 			$("#accountNumber").html(result.accountNumber);
 //			$("#status").html(Dict.getName('withdraw_status',result.status));
 //			$("#channel").html(result.channel);
-//			$("#toBelong").html(result.toBelong);
+			$("#approveNote").html(result.approveNote);
 			$("#amount").html(moneyFormat(result.amount,2));
 			$("#bankCode").html(Dict.getName('charge_type',result.fromType));
 			$("#bankcardNo").html(result.fromCode);

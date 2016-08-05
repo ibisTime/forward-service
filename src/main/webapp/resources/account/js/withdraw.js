@@ -16,6 +16,11 @@ $(function() {
 	$('#searchBtn').click(function() {
 		$('#tableList').bootstrapTable('refresh',{url: $("#basePath").val()+"/account/withdrawOrderPage"});
 	});
+	
+	$('#applyBtn').click(function() {
+		window.location.href = $("#basePath").val()+"/account/withdrawl_apply.htm";
+	});
+	
 	// 详情
 	$('#detailBtn').click(function() {
 		var selRecords = $('#tableList').bootstrapTable('getSelections')
@@ -23,7 +28,7 @@ $(function() {
 			alert("请选择记录");
 			return;
 		}
-		location.href = $("#basePath").val()+"/account/withdraw_detail.htm?cqNo="+selRecords[0].cqNo+"&accountNumber="+selRecords[0].accountNumber;
+		location.href = $("#basePath").val()+"/account/withdraw_detail.htm?code="+selRecords[0].code+"&accountNumber="+selRecords[0].accountNumber;
 	});
 	
 	// 
@@ -37,7 +42,7 @@ $(function() {
 			alert("该订单状态不是待审批状态");
 			return;
 		}
-		location.href = $("#basePath").val()+"/account/withdraw_approve.htm?cqNo="+selRecords[0].cqNo+"&accountNumber="+selRecords[0].accountNumber;
+		location.href = $("#basePath").val()+"/account/withdraw_approve.htm?code="+selRecords[0].code+"&accountNumber="+selRecords[0].accountNumber;
 	});
 	
 	// 支付事件绑定
@@ -51,7 +56,7 @@ $(function() {
 			alert("该订单状态不是审批通过-待支付状态");
 			return;
 		}
-		location.href = $("#basePath").val()+"/account/withdraw_pay.htm?cqNo="+selRecords[0].cqNo+"&accountNumber="+selRecords[0].accountNumber;
+		location.href = $("#basePath").val()+"/account/withdraw_pay.htm?code="+selRecords[0].code+"&accountNumber="+selRecords[0].accountNumber;
 	});
 	
 //	// 查看详情事件绑定
@@ -127,7 +132,7 @@ function queryTableData(){
 			sortable : false
 		},{
 			field : 'amount',
-			title : '金额',
+			title : '积分',
 			align : 'left',
 			valign : 'middle',
 			sortable : true,

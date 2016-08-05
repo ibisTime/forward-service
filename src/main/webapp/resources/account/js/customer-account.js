@@ -77,14 +77,14 @@ function queryTableData(){
 				sortable : false
 			},{
 				field : 'amount',
-				title : '资金',
+				title : '积分',
 				align : 'left',
 				valign : 'middle',
 				formatter : moneyFormatter,
 				sortable : false
 			},{
 				field : 'frozenAmount',
-				title : '冻结金额',
+				title : '冻结积分',
 				align : 'left',
 				valign : 'middle',
 				formatter : moneyFormatter,

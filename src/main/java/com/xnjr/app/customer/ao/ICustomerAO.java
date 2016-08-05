@@ -38,4 +38,6 @@ public interface ICustomerAO {
      */
     public Object channeleditName(String userId, String realName);
 
+    public Object detailmoney(String userId);
+
 }

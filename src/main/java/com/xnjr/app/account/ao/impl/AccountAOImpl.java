@@ -150,7 +150,7 @@ public class AccountAOImpl implements IAccountAO {
             String dateEnd, String start, String limit) {
         XN802200Req req = new XN802200Req();
         req.setAccountNumber(accountNumber);
-        req.setCode(toCode);
+        req.setCode(code);
         req.setToType(toType);
         req.setToCode(toCode);
         req.setChannel(channel);

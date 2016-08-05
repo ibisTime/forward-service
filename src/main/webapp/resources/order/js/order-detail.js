@@ -52,7 +52,7 @@ $(function() {
 				sortable : false
 			},{
 				field : 'amount',
-				title : '金额',
+				title : '积分',
 				align : 'left',
 				valign : 'middle',
 				sortable : true,
@@ -69,6 +69,14 @@ $(function() {
 				title : '水单',
 				align : 'left',
 				valign : 'middle',
+				formatter:function(value){
+					if(value!='无'){
+						return '<a target="_blank" href="'+value+'">'+value+'</a>';
+					} else {
+						return '无';
+					}
+					
+				},
 				sortable : true
 			}]
 		});

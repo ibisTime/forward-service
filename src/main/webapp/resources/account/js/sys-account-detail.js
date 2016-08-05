@@ -77,21 +77,21 @@ function queryJourTableData(){
 			sortable : false
 		},{
 			field : 'transAmount',
-			title : '变动金额',
+			title : '变动积分',
 			align : 'middle',
 			valign : 'middle',
 			sortable : false,
 			formatter : moneyFormatter
 		}, {
 			field : 'preAmount',
-			title : '变动前金额',
+			title : '变动前积分',
 			align : 'middle',
 			valign : 'middle',
 			sortable : false,
 			formatter : moneyFormatter
 		}, {
 			field : 'postAmount',
-			title : '变动后金额',
+			title : '变动后积分',
 			align : 'middle',
 			valign : 'middle',
 			sortable : false,

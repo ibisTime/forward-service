@@ -38,9 +38,9 @@ $(function (){
 				maxlength: jQuery.format("账户编号不能大于{0}个字符")
 			},
 			amount:{
-				required: "请输入取现金额",
-				number:"取现金额请输入数字",
-				maxlength: jQuery.format("取现金额不能大于{0}个字符")
+				required: "请输入取现积分",
+				number:"取现积分请输入数字",
+				maxlength: jQuery.format("取现积分不能大于{0}个字符")
 			}
 		}
 	})

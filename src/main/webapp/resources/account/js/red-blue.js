@@ -18,7 +18,7 @@ $(function() {
 		sortOrder : 'desc',
 		queryParams : function(params) {
 			return {
-				accountNumber : $("#accountNumberSearch").val(),
+				accountNumber : $("#accountNumber").val(),
 				status : $("#statusSearch").val(),
 				direction : $("#directionSearch").val(),
 				dateStart : $("#dateStartSearch").val(),
@@ -75,7 +75,7 @@ $(function() {
 			formatter : Dict.getNameForList('account_direction')
 		}, {
 			field : 'amount',
-			title : '金额',
+			title : '积分',
 			align : 'right',
 			valign : 'middle',
 			sortable : true,
@@ -92,14 +92,12 @@ $(function() {
 			align : 'left',
 			valign : 'middle',
 			sortable : false,
-//			formatter : dateTimeFormat
 		}, {
-			field : 'remark',
+			field : 'approveNote',
 			title : '备注',
 			align : 'left',
 			valign : 'middle',
 			sortable : false,
-			visible : false
 		}]
 	});
 

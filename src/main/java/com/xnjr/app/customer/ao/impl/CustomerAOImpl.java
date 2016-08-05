@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.xnjr.app.customer.ao.ICustomerAO;
 import com.xnjr.app.customer.req.XN602800Req;
+import com.xnjr.app.customer.req.XN802012Req;
 import com.xnjr.app.customer.req.XN805070Req;
 import com.xnjr.app.customer.req.XN805071Req;
 import com.xnjr.app.customer.res.XN805070Res;
@@ -51,6 +52,14 @@ public class CustomerAOImpl implements ICustomerAO {
         req.setUserId(userId);
         req.setRealName(realName);
         return BizConnecter.getBizData("805071", JsonUtils.object2Json(req),
+            Object.class);
+    }
+
+    @Override
+    public Object detailmoney(String userId) {
+        XN802012Req req = new XN802012Req();
+        req.setUserId(userId);
+        return BizConnecter.getBizData("802012", JsonUtils.object2Json(req),
             Object.class);
     }
 }

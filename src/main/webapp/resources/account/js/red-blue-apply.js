@@ -54,10 +54,10 @@ $(function(){
 				maxlength: jQuery.format("方向不能大于{0}个字符")
 			},
 			amount: {
-				required: "请输入金额",
-				number:"金额请输入数字",
-				maxlength: jQuery.format("金额不能大于{0}个字符"),
-				min: jQuery.format("金额不能小于{0}")
+				required: "请输入积分",
+				number:"积分请输入数字",
+				maxlength: jQuery.format("积分不能大于{0}个字符"),
+				min: jQuery.format("积分不能小于{0}")
 			},
 			applyUser: {
 				required: "请输入申请人",
@@ -65,7 +65,7 @@ $(function(){
 			},
 			applyNote: {
 				required: "请输入申请说明",
-				maxlength: jQuery.format("备注不能大于{0}个字符")
+				maxlength: jQuery.format("申请说明不能大于{0}个字符")
 			}
 		}
 	});

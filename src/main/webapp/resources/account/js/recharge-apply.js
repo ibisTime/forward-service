@@ -65,9 +65,9 @@ $(function (){
 				maxlength: jQuery.format("支付账号不能大于{0}个字符")
 			},
 			amount:{
-				required: "请输入充值金额",
-				number:"充值金额请输入数字",
-				maxlength: jQuery.format("充值金额不能大于{0}个字符")
+				required: "请输入充值积分",
+				number:"充值积分请输入数字",
+				maxlength: jQuery.format("充值积分不能大于{0}个字符")
 			}
 		}
 	})

@@ -18,7 +18,7 @@ $(function() {
 		
 		$("#shoukuang").html($(this).val());
 	});
-	$('#fromType').renderDropdown(Dict.getName('pay_type'));
+	$('#fromType').renderDropdown(Dict.getName('charge_type'));
 	//新增修改判断
 	initBusinessTable();
 	if(isBlank(invoiceCode)){
@@ -96,8 +96,8 @@ $(function() {
 		},
 		messages: {
 			amount: {
-				required: "请输入金额",
-				maxlength: jQuery.format("金额不能大于{0}个字符")
+				required: "请输入积分",
+				maxlength: jQuery.format("积分不能大于{0}个字符")
 			},
 			fromType: {
 				required: "请选择打款方式",

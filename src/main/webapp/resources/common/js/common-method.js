@@ -454,3 +454,22 @@ Array.minus = function(a, b){
 Array.union = function(a, b){  
     return a.concat(b).uniquelize();  
 };  
+
+//面包屑
+setTimeout(function() {
+	var topTitle = $('.nav .selected h2', window.parent.frames[0].document).text();
+	var leftFirstTitle = $('.left-menu .active', window.parent.frames[1].document).parent().parent().find('.title').text();
+	var leftSecondTitle = $('.left-menu .active', window.parent.frames[1].document).text();
+	var html = '<li>'+topTitle+'</li><li>'+leftFirstTitle+'</li><li>'+leftSecondTitle+'</li>';
+	var BtnTitle = localStorage.getItem('syj-btn');
+	localStorage.setItem('syj-btn', '');
+	if (BtnTitle) {
+		html += '<li>'+BtnTitle+'</li>';
+	}
+	$('.place ul').html(html);
+}, 1);
+
+$(document).on('click', '.toolbar li[id*=Btn]', function(e) {
+	var text = $(this).text();
+	localStorage.setItem('syj-btn', text);
+});

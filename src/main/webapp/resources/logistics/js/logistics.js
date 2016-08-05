@@ -48,7 +48,7 @@ function queryTableData(){
 		sortable : false
 	},{
 		field : 'totalAmount',
-		title : '总金额',
+		title : '总积分',
 		align : 'left',
 		valign : 'middle',
 		formatter:moneyFormatter,

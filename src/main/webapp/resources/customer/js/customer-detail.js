@@ -35,6 +35,8 @@ function doSuccessData(res){
 		var result = res.data;
 		$("#userId").html(result.userId);
 		$("#mobile").html(result.mobile);
+		$("#userReferee").html(result.userReferee);
+		$("#remark").html(result.remark);
 		$("#realName").html(result.realName);
 		$("#idKind").html(Dict.getName('id_kind', result.idKind));
 		$("#idNo").html(result.idNo);
