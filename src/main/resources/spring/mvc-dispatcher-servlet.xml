@@ -16,7 +16,7 @@
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 	default-autowire="default">
 	<!-- 扫描package进行注解 -->
-	<context:component-scan base-package="com.xnjr">
+	<context:component-scan base-package="com.cdkj">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:include-filter>
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"></context:include-filter>
 	</context:component-scan>
@@ -37,7 +37,7 @@
 	</bean>
 	<!-- 转json所支持的头信息类型  -->
    	<bean id="messageConverter"
-		class="com.xnjr.app.json.JsonConverter">
+		class="com.cdkj.service.json.JsonConverter">
 		<property name="supportedMediaTypes">
 			<list>
 				<value>application/json;charset=UTF-8</value>
@@ -95,7 +95,7 @@
 		</property>
 	</bean>
 	<!-- 视图找不到不会有异常信息 -->
-	<bean id="handlerExceptionResolver" class="com.xnjr.app.exception.ExceptionResolver">
+	<bean id="handlerExceptionResolver" class="com.cdkj.service.exception.ExceptionResolver">
 		<property name="warnLogCategory" value="INFO" />
 		<property name="defaultStatusCode" value="500" />
 		<property name="defaultErrorView" value="error/error" />
@@ -123,14 +123,14 @@
 	</bean>
 
 	<!-- 会话管理器 -->
-	<bean id="sessionInterceptor" class="com.xnjr.app.session.SessionContextInterceptor">
+	<bean id="sessionInterceptor" class="com.cdkj.service.session.SessionContextInterceptor">
 		<property name="sessionProvider" ref="sessionProvider" />
 	</bean>
-	<bean id="sessionProvider" class="com.xnjr.app.session.HttpSessionProvider" />
+	<bean id="sessionProvider" class="com.cdkj.service.session.HttpSessionProvider" />
 	
 	<mvc:interceptors>
 		 <!-- 拦截HttpServletRequest、 HttpServletResponse -->
-		<bean class="com.xnjr.app.base.ContextInterceptor"/>
+		<bean class="com.cdkj.service.base.ContextInterceptor"/>
 		
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<!-- //改变语言时所用的参数名称 -->

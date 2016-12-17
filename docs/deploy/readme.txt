@@ -1,46 +1,151 @@
-部署步骤：
-1,打包
-  将包导出到本地路径，例如包已在/Users/xieyj/Desktop/package文件夹中
-2,包上传
-  1).将路径切换到包路径，例如cd /Users/xieyj/Desktop/package，然后上传
-   scp -P 57652 ./xn-moom-oss.war root@120.55.113.192:/home/
-   scp -P56011 ./xn-moom-oss.war root@115.28.58.167:/home/
-   
-      scp -P57652 ./xn-moom-oss.war root@120.26.222.73:/home/
-   
+制作钥匙：
 
-3，部署
-  1）务必谨慎，须备份ueditor下面的image文件，更改路径最后日期，语句:cp -r /home/tomcat_GJS_app_oss/webapps/xn-moom-oss/ueditor/jsp/upload/image /home/image_bak/xn_moom_oss/20160121(当前日期)
+在装有java环境里
+1，切换到DatGen.java目录,比如E目录
+2，E:\>javac -d ./ DatGen.java
+3，E:\>java DatGen '{"ipList":["127.0.0.1"],"codeList":["805000","805001","805002","805003","805004","805005","805020","805021","805022","805023","805024","805025","805026","805027","805040","805041","805042","805043","805044","805045","805046","805047","805048","805049","805050","805051","805052","805053","805054","805055","805056","805057","805058","805059","805060","805061","805062","805063","805070","805071","805072","805073","805074","805075","805076","805077","805080","805081","805082","805090","805091","805100","805101","805102","805110","805111","805112","805113","805114","805300","805310","805900","805901","805902","805903","806000","806001","806002","806003","806004","806010","806011","806012","806013","806014"]}'
+
+4，拷贝当前目录下的“config.dat"到项目“{项目路径}\src\main\resources"
+5，验证：项目跑起来。在浏览器输入“http://IP:端口/项目名/api"，出现版本信息即成功。
+
+
+部署步骤：
+1、包上传
+scp -P57652 ./forward-service.war root@121.43.101.148:/home
+T6dh%$%$ss1
   
-  2）ssh -p 57652 root@120.55.113.192
+2，部署
+  ssh root@121.43.101.148 -p 57652
   
-    
-  3）cd /home/tomcat_SYJ_oss/webapps
+  cd /home/wwwroot/zhpay/tomcat_forward_service/webapps
+  cp ./forward-service/WEB-INF/classes/config.properties .
   
-  cp -f ./xn-moom-oss/WEB-INF/classes/application.properties .
-  cp -f ./xn-moom-oss/WEB-INF/classes/config.properties .
-  rm -rf xn-moom-oss.war
-  rm -rf xn-moom-oss
-  mv /home/xn-moom-oss.war .
+  rm -rf forward-service.war
+  rm -rf forward-service
+  mv /home/forward-service.war .
   
-  等待tomcat解压出现xn-moom-oss文件夹
-  mv -f application.properties ./xn-moom-oss/WEB-INF/classes/
-  mv -f config.properties ./xn-moom-oss/WEB-INF/classes/
-  mv -f config.json ./xn-moom-oss/ueditor/jsp/
-  mv -f image/ ./xn-moom-oss/ueditor/jsp/upload/
+  mv -f config.properties ./forward-service/WEB-INF/classes/
   
-  cd xn-moom-oss/WEB-INF/classes/
-  vi application.properties 
-  
-4,起停tomcat
-  cd /home/tomcat_SYJ_oss/webapps
   ../bin/shutdown.sh
   ../bin/startup.sh
   
-5,验证
-  http://120.26.222.73:7208/xn-moom-oss
+  http://121.43.101.148:5601/forward-service/api
   
+ --------------------cswlm
+  cd /home/wwwroot/forum/tomcat_std_user/webapps
+  cp ./std-user/WEB-INF/classes/application.properties .
+  cp ./std-user/WEB-INF/classes/config.properties .
   
+  rm -rf std-user.war
+  rm -rf std-user
+  mv /home/std-user.war .
   
+  mv -f application.properties ./std-user/WEB-INF/classes/
+  mv -f config.properties ./std-user/WEB-INF/classes/
   
+  ../bin/shutdown.sh
+  ../bin/startup.sh
+  
+  http://121.43.101.148:5405/std-user/api
+  
+  --------------------jj-service
+  cd /home/wwwroot/jj-service/tomcat_std_user/webapps
+  cp ./std-user/WEB-INF/classes/application.properties .
+  cp ./std-user/WEB-INF/classes/config.properties .
+  
+  rm -rf std-user.war
+  rm -rf std-user
+  mv /home/std-user.war .
+  
+  mv -f application.properties ./std-user/WEB-INF/classes/
+  mv -f config.properties ./std-user/WEB-INF/classes/
+  
+  ../bin/shutdown.sh
+  ../bin/startup.sh
+  
+  http://121.43.101.148:5505/std-user/api
+  
+  --------------------cdhome
+  cd /home/wwwroot/cdhome/tomcat_std_user/webapps
+  cp ./std-user/WEB-INF/classes/application.properties .
+  cp ./std-user/WEB-INF/classes/config.properties .
+  
+  rm -rf std-user.war
+  rm -rf std-user
+  mv /home/std-user.war .
+  
+  mv -f application.properties ./std-user/WEB-INF/classes/
+  mv -f config.properties ./std-user/WEB-INF/classes/
+  
+  ../bin/shutdown.sh
+  ../bin/startup.sh
+  
+http://121.43.101.148:6302/std-user/api
+
+  --------------------mall  --------------------
+  cd /home/wwwroot/b2cmall/tomcat_std_user/webapps
+  cp ./std-user/WEB-INF/classes/application.properties .
+  cp ./std-user/WEB-INF/classes/config.properties .
+  
+  rm -rf std-user.war
+  rm -rf std-user
+  mv /home/std-user.war .
+  
+  mv -f application.properties ./std-user/WEB-INF/classes/
+  mv -f config.properties ./std-user/WEB-INF/classes/
+  
+  ../bin/shutdown.sh
+  ../bin/startup.sh
+  http://121.43.101.148:6405/std-user/api
+  
+  --------------------push-sms
+  cd /home/wwwroot/push-sms/tomcat_std_user/webapps
+  cp ./std-user/WEB-INF/classes/application.properties .
+  cp ./std-user/WEB-INF/classes/config.properties .
+  
+  rm -rf std-user.war
+  rm -rf std-user
+  mv /home/std-user.war .
+  
+  mv -f application.properties ./std-user/WEB-INF/classes/
+  mv -f config.properties ./std-user/WEB-INF/classes/
+  
+  ../bin/shutdown.sh
+  ../bin/startup.sh
+  
+http://121.43.101.148:6505/std-user/api
+  
+  --------------------zhpay
+  cd /home/wwwroot/zhpay/tomcat_std_user/webapps
+  cp ./std-user/WEB-INF/classes/application.properties .
+  cp ./std-user/WEB-INF/classes/config.properties .
+  
+  rm -rf std-user.war
+  rm -rf std-user
+  mv /home/std-user.war .
+  
+  mv -f application.properties ./std-user/WEB-INF/classes/
+  mv -f config.properties ./std-user/WEB-INF/classes/
+  
+  ../bin/shutdown.sh
+  ../bin/startup.sh
+  
+    http://121.43.101.148:5605/std-user/api
+  
+   --------------------qlqq
+  cd /home/wwwroot/ride/tomcat_std_user/webapps
+  cp ./std-user/WEB-INF/classes/application.properties .
+  cp ./std-user/WEB-INF/classes/config.properties .
+  
+  rm -rf std-user.war
+  rm -rf std-user
+  mv /home/std-user.war .
+  
+  mv -f application.properties ./std-user/WEB-INF/classes/
+  mv -f config.properties ./std-user/WEB-INF/classes/
+  
+  ../bin/shutdown.sh
+  ../bin/startup.sh
+  
+  http://121.43.101.148:5705/std-user/api
   
