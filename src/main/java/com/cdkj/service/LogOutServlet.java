@@ -10,20 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.cdkj.service.proxy.DispatcherImpl;
-import com.cdkj.service.proxy.IDispatcher;
+import com.cdkj.service.enums.EErrorCode;
+import com.cdkj.service.http.JsonUtils;
+import com.cdkj.service.proxy.ReturnMessage;
 import com.cdkj.service.spring.SpringContextHolder;
+import com.cdkj.service.token.BooleanRes;
+import com.cdkj.service.token.ITokenDAO;
+import com.cdkj.service.token.impl.TokenDAOImpl;
 
 /**
+ * 退出登录状态
  * @author: xieyj 
  * @since: 2016年12月14日 下午12:55:40 
  * @history:
  */
-public class ServiceServlet extends HttpServlet {
-    static Logger logger = Logger.getLogger(ServiceServlet.class);
+public class LogOutServlet extends HttpServlet {
+    static Logger logger = Logger.getLogger(LogOutServlet.class);
 
-    private IDispatcher dispatcher = SpringContextHolder
-        .getBean(DispatcherImpl.class);
+    private ITokenDAO tokenDAO = SpringContextHolder
+        .getBean(TokenDAOImpl.class);
 
     /** 
      * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么) 
@@ -35,11 +40,7 @@ public class ServiceServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        logger.info("Successful Deployment");
-        PrintWriter writer = response.getWriter();
-        writer.append("Version:1.0.0 \n");
-        writer.append("Description:forward 1st \n");
-        writer.flush();
+        logout(request, response);
     }
 
     /**
@@ -47,11 +48,19 @@ public class ServiceServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        String code = request.getParameter("code");
-        String json = request.getParameter("json");
-        String result = dispatcher.doDispatcher(code, json);
+        logout(request, response);
+    }
+
+    private void logout(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String tokenId = request.getParameter("token");
+        tokenDAO.delToken(tokenId);
+        ReturnMessage rm = new ReturnMessage();
+        rm.setErrorCode(EErrorCode.SUCCESS.getCode());
+        rm.setErrorInfo(EErrorCode.SUCCESS.getValue());
+        rm.setData(new BooleanRes(true));
         PrintWriter writer = response.getWriter();
-        writer.append(result);
+        writer.append(JsonUtils.object2Json(rm));
         writer.flush();
     }
 }

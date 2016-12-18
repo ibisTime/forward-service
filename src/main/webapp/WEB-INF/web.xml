@@ -77,4 +77,12 @@
     <servlet-name>api</servlet-name>
     <url-pattern>/api</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>logOut</servlet-name>
+    <servlet-class>com.cdkj.service.LogOutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logOut</servlet-name>
+    <url-pattern>/logOut</url-pattern>
+  </servlet-mapping>
 </web-app>
