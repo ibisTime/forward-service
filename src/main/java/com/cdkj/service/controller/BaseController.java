@@ -64,7 +64,7 @@ public class BaseController {
         PrintWriter writer;
         try {
             writer = response.getWriter();
-            writer.append(getRemoteHost());
+            writer.append("{ \"ip\" : \"" + getRemoteHost() + "\" }");
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
