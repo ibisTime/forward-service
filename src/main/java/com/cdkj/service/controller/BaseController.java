@@ -8,8 +8,16 @@
  */
 package com.cdkj.service.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cdkj.service.base.ControllerContext;
 import com.cdkj.service.session.ISessionProvider;
@@ -49,5 +57,18 @@ public class BaseController {
             ip = ControllerContext.getRequest().getRemoteAddr();
         }
         return ip.equals("0:0:0:0:0:0:0:1") ? "127.0.0.1" : ip;
+    }
+
+    @RequestMapping(value = "/ip", method = RequestMethod.GET)
+    public void getIp(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter writer;
+        try {
+            writer = response.getWriter();
+            writer.append(getRemoteHost());
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
