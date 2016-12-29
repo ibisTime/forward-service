@@ -22,13 +22,17 @@ import com.cdkj.service.util.RegexUtils;
 public class BizConnecter {
     public static final String YES = "0";
 
-    public static final String MALL_URL = PropertiesUtil.Config.MALL_URL;
-
     public static final String USER_URL = PropertiesUtil.Config.USER_URL;
 
     public static final String ACCOUNT_URL = PropertiesUtil.Config.ACCOUNT_URL;
 
     public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
+
+    public static final String MALL_URL = PropertiesUtil.Config.MALL_URL;
+
+    public static final String RIDE_URL = PropertiesUtil.Config.RIDE_URL;
+
+    public static final String LOAN_URL = PropertiesUtil.Config.LOAN_URL;
 
     public static String getBizData(String code, String json) {
         String data = null;
@@ -66,6 +70,10 @@ public class BizConnecter {
             postUrl = SMS_URL;
         } else if (code.startsWith("808")) {
             postUrl = MALL_URL;
+        } else if (code.startsWith("616")) {
+            postUrl = RIDE_URL;
+        } else if (code.startsWith("617")) {
+            postUrl = LOAN_URL;
         }
         return postUrl;
     }
