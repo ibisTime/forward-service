@@ -58,4 +58,19 @@
 	  <code>807710</code> 
 	  <code>807711</code> 
    <!-- 用户模块拦截功能号end--> 
+   <!-- 骑来骑去业务模块拦截功能号start--> 
+      <code>616100</code> 
+      <code>616101</code> 
+      <code>616211</code> 
+      <code>616102</code> 
+      <code>616130</code> 
+      <code>616131</code> 
+      <code>616132</code> 
+      <code>616180</code> 
+      <code>616181</code> 
+      <code>616182</code> 
+      <code>616183</code> 
+      <code>616184</code> 
+      <code>616222</code> 
+   <!-- 骑来骑去业务模块拦截功能号end--> 
 </filterCodes> 
