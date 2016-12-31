@@ -49,9 +49,6 @@
       <code>806020</code> 
       <code>806021</code> 
       <code>806022</code> 
-      <code>806030</code> 
-	  <code>806031</code> 
-	  <code>806032</code> 
 	  <code>807700</code> 
 	  <code>807701</code> 
 	  <code>807702</code> 
@@ -71,6 +68,5 @@
       <code>616182</code> 
       <code>616183</code> 
       <code>616184</code> 
-      <code>616222</code> 
    <!-- 骑来骑去业务模块拦截功能号end--> 
 </filterCodes> 
