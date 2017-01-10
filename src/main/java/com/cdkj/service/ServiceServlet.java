@@ -38,7 +38,7 @@ public class ServiceServlet extends HttpServlet {
         logger.info("Successful Deployment");
         PrintWriter writer = response.getWriter();
         writer.append("Version:1.0.0 \n");
-        writer.append("Description:forward 5th \n");
+        writer.append("Description:forward 1st \n");
         writer.flush();
     }
 

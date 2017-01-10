@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cdkj.service.common.OrderNoGenerater;
 import com.cdkj.service.common.XmlParse;
@@ -32,6 +33,7 @@ public class DispatcherImpl implements IDispatcher {
     // 4、验证通过后转发接口
     @Override
     @SuppressWarnings("unchecked")
+    @Transactional
     public String doDispatcher(String transcode, String inputParams) {
         String result = null;
         ReturnMessage rm = new ReturnMessage();
@@ -58,7 +60,8 @@ public class DispatcherImpl implements IDispatcher {
             // 4、验证通过后转发接口
             String resultData = BizConnecter.getBizData(transcode, inputParams);
             // 5、登录接口，组装token返回
-            if ("805043".equals(transcode) || "805152".equals(transcode)) {
+            if ("805041".equals(transcode) || "805043".equals(transcode)
+                    || "805152".equals(transcode)) {
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 String userId = String.valueOf(resultMap.get("userId"));
