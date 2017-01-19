@@ -35,5 +35,6 @@ public class PropertiesUtil {
 
         public static String LOAN_URL = props.getProperty("LOAN_URL");
 
+        public static String GAME_URL = props.getProperty("GAME_URL");
     }
 }

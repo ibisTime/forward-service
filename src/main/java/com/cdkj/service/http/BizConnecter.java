@@ -28,6 +28,8 @@ public class BizConnecter {
 
     public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
 
+    public static final String GAME_URL = PropertiesUtil.Config.GAME_URL;
+
     public static final String MALL_URL = PropertiesUtil.Config.MALL_URL;
 
     public static final String RIDE_URL = PropertiesUtil.Config.RIDE_URL;
@@ -74,6 +76,8 @@ public class BizConnecter {
             postUrl = RIDE_URL;
         } else if (code.startsWith("617")) {
             postUrl = LOAN_URL;
+        } else if (code.startsWith("803")) {
+            postUrl = GAME_URL;
         }
         return postUrl;
     }
