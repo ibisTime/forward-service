@@ -68,6 +68,8 @@ public class BizConnecter {
             postUrl = USER_URL;
         } else if (code.startsWith("802")) {
             postUrl = ACCOUNT_URL;
+        } else if (code.startsWith("803")) {
+            postUrl = GAME_URL;
         } else if (code.startsWith("804")) {
             postUrl = SMS_URL;
         } else if (code.startsWith("808")) {
@@ -76,8 +78,6 @@ public class BizConnecter {
             postUrl = RIDE_URL;
         } else if (code.startsWith("617")) {
             postUrl = LOAN_URL;
-        } else if (code.startsWith("803")) {
-            postUrl = GAME_URL;
         }
         return postUrl;
     }
