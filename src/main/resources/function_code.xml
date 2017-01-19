@@ -55,6 +55,20 @@
 	  <code>807710</code> 
 	  <code>807711</code> 
    <!-- 用户模块拦截功能号end--> 
+   <!-- 账户模块拦截功能号start-->
+      <code>802503</code> 
+	  <code>802510</code> 
+	  <code>802526</code> 
+	  <code>802511</code> 
+	  <code>802514</code> 
+	  <code>802515</code> 
+	  <code>802516</code> 
+	  <code>802520</code> 
+	  <code>802521</code> 
+	  <code>802522</code> 
+	  <code>802524</code> 
+	  <code>802518</code> 
+   <!-- 账户模块拦截功能号end--> 
    <!-- 骑来骑去业务模块拦截功能号start--> 
       <code>616100</code> 
       <code>616101</code> 
