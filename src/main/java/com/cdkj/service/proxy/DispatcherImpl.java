@@ -61,7 +61,8 @@ public class DispatcherImpl implements IDispatcher {
             String resultData = BizConnecter.getBizData(transcode, inputParams);
             // 5、登录接口，组装token返回
             if ("805041".equals(transcode) || "805043".equals(transcode)
-                    || "805152".equals(transcode) || "805182".equals(transcode)) {
+                    || "805152".equals(transcode) || "805182".equals(transcode)
+                    || "805183".equals(transcode)) {
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 String userId = String.valueOf(resultMap.get("userId"));
