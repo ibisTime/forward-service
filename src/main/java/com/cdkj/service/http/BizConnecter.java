@@ -36,6 +36,8 @@ public class BizConnecter {
 
     public static final String LOAN_URL = PropertiesUtil.Config.LOAN_URL;
 
+    public static final String TOUR_URL = PropertiesUtil.Config.TOUR_URL;
+
     public static String getBizData(String code, String json) {
         String data = null;
         String resJson = null;
@@ -46,7 +48,7 @@ public class BizConnecter {
             resJson = PostSimulater.requestPostForm(getPostUrl(code),
                 formProperties);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new BizException("Biz000", "链接请求超时，请联系管理员");
         }
         // 开始解析响应json
         String errorCode = RegexUtils.find(resJson, "errorCode\":\"(.+?)\"", 1);
@@ -78,6 +80,8 @@ public class BizConnecter {
             postUrl = RIDE_URL;
         } else if (code.startsWith("617")) {
             postUrl = LOAN_URL;
+        } else if (code.startsWith("618")) {
+            postUrl = TOUR_URL;
         }
         return postUrl;
     }
