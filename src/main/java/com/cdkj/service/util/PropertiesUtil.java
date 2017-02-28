@@ -29,7 +29,7 @@ public class PropertiesUtil {
 
         public static String SMS_URL = props.getProperty("SMS_URL");
 
-        public static String MALL_URL = props.getProperty("MALL_URL");
+        public static String ZHPAY_URL = props.getProperty("ZHPAY_URL");
 
         public static String RIDE_URL = props.getProperty("RIDE_URL");
 

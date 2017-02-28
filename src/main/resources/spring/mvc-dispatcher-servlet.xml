@@ -22,7 +22,7 @@
 	</context:component-scan>
 	
 	<!-- 对静态资源文件的访问  start-->
-	<mvc:resources mapping="/xn-tastetime-oss/resources/**" location="/resources/**" />
+	<mvc:resources mapping="/forward-service/resources/**" location="/resources/**" />
 		
 	<mvc:default-servlet-handler />
 	<mvc:annotation-driven validator="validator">
@@ -140,58 +140,17 @@
 		    <!-- 权限相关 start -->
 		    <mvc:mapping path="/menu/**"/>
 		    <mvc:mapping path="/role/**"/>
-		    <mvc:mapping path="/user/**"/>
-		    <mvc:mapping path="/account/**"/>
+<!-- 		    <mvc:mapping path="/user/**"/>
+ -->		    <mvc:mapping path="/account/**"/>
 		    <!-- 权限相关 end -->
 		    
 		    <!-- 客户相关start -->
 		    <mvc:mapping path="/customer/**"/>
 		    <!-- 客户相关end -->
 		    
-		    <!-- 客户相关start -->
-		    <mvc:mapping path="/product/**"/>
-		    <!-- 客户相关end -->
-		    
-		    <!-- 型号相关start -->
-		    <mvc:mapping path="/model/**"/>
-		    <!-- 客户相关end -->
-		    
-		    <!-- 物流相关start -->
-		    <mvc:mapping path="/logistics/**"/>
-		    <!-- 物流相关end -->
-		    
-		    <!-- 售后服务start -->
-		    <mvc:mapping path="/repair/**"/>
-		    <!-- 售后服务end -->
-		    
-		    <!-- 取现相关start -->
-		    <mvc:mapping path="/withdraw/**"/>
-		    <!-- 取现相关end -->
-		    
 		    <!-- 基础数据相关start -->
 		    <mvc:mapping path="/general/**"/>
 		    <!-- 基础数据相关end -->
-		    
-		     <!-- 操盘手相关start -->
-		    <mvc:mapping path="/operator/**"/>
-		    <!-- 操盘手相关end -->
-		    
-		    <!-- 平台相关start -->
-		    <mvc:mapping path="/plat/**"/>
-		    <!-- 平台相关end -->
-		    
-		    <!-- 合同相关start -->
-		    <mvc:mapping path="/contract/**"/>
-		    <!-- 合同相关end -->
-		    <mvc:mapping path="/bank/**"/>
-		    <mvc:mapping path="/subbank/**"/>
-			<mvc:mapping path="/gene/smscaptcha/send" />
-			<mvc:mapping path="/user/**" />
-			<mvc:mapping path="/account/**" />
-			<mvc:mapping path="/account/recharge/page" />
-			<mvc:mapping path="/account/redBlue/approve" />
-			<mvc:mapping path="/company/**" />
-			<mvc:mapping path="/project/**" />
 			
 			<!--注册相关 start  -->
 			<mvc:exclude-mapping path="/user/signup.htm"/>
@@ -199,6 +158,7 @@
 		 	<mvc:exclude-mapping path="/user/regist" />
 		 	<mvc:exclude-mapping path="/user/signup_success.htm" />
 		 	<!--注册相关 end  -->
+		 	
 		 	<!--登录登出相关 start  -->
 		 	<mvc:exclude-mapping path="/user/signin.htm"/>
 		 	<mvc:exclude-mapping path="/user/login"/>
@@ -214,7 +174,6 @@
 		 	<mvc:exclude-mapping path="/index*" />
 		 	<mvc:exclude-mapping path="/system/version.htm" />
 			<ref bean="sessionInterceptor" />
-			
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>

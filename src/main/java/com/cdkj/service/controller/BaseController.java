@@ -14,31 +14,30 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cdkj.service.base.ControllerContext;
-import com.cdkj.service.session.ISessionProvider;
-import com.cdkj.service.session.SessionUser;
-import com.cdkj.service.session.UserDetailHolder;
+import com.cdkj.service.common.JsonUtil;
+import com.cdkj.service.dto.req.XN805158Req;
+import com.cdkj.service.enums.EErrorCode;
+import com.cdkj.service.enums.ETokenPrefix;
+import com.cdkj.service.exception.BizException;
+import com.cdkj.service.http.BizConnecter;
+import com.cdkj.service.http.JsonUtils;
+import com.cdkj.service.proxy.ReturnMessage;
+import com.cdkj.service.token.BooleanRes;
+import com.cdkj.service.token.ITokenDAO;
 
 @Controller
 public class BaseController {
 
     @Autowired
-    protected ISessionProvider sessionProvider;
-
-    /**
-     * 获取session user
-     * 
-     * @return
-     */
-    protected SessionUser getSessionUser() {
-        SessionUser user = (SessionUser) UserDetailHolder.getUserDetail();
-        return user;
-    }
+    protected ITokenDAO tokenDAO;
 
     /**
      * 获取IP地址
@@ -69,6 +68,42 @@ public class BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    @RequestMapping(value = "/user/logOut", method = RequestMethod.POST)
+    @ResponseBody
+    public void logOut(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("********************登出开始**********************");
+        String tokenId = request.getParameter("token");
+        if (StringUtils.isBlank(tokenId)) {
+            throw new BizException("xn0000", "token必填，请输入");
+        }
+        tokenDAO.delToken(tokenId);
+        String userId = tokenId.substring(
+            tokenId.indexOf(ETokenPrefix.TU.getCode()) + 1,
+            tokenId.indexOf(ETokenPrefix.TK.getCode()));
+        doRemoveLocation(userId);
+        // 将用户的经纬度设置成空
+        ReturnMessage rm = new ReturnMessage();
+        rm.setErrorCode(EErrorCode.SUCCESS.getCode());
+        rm.setErrorInfo(EErrorCode.SUCCESS.getValue());
+        rm.setData(new BooleanRes(true));
+        PrintWriter writer;
+        try {
+            writer = response.getWriter();
+            writer.append(JsonUtils.object2Json(rm));
+            writer.flush();
+        } catch (IOException e) {
+            throw new BizException("xn0000", "登出失败");
+        }
+        System.out.println("********************登出结束**********************");
+    }
+
+    private void doRemoveLocation(String userId) {
+        XN805158Req req = new XN805158Req();
+        req.setUserId(userId);
+        req.setLatitude("-1");
+        req.setLongitude("-1");
+        BizConnecter.getBizData("805158", JsonUtil.Object2Json(req));
     }
 }

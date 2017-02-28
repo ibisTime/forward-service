@@ -87,14 +87,4 @@ public class TokenDAOImpl<T> implements ITokenDAO {
             }
         });
     }
-
-    // private String splitToken(String tokenId) {
-    // String userId = null;
-    // String[] tokens = null;
-    // if (StringUtils.isNotBlank(tokenId)) {
-    // tokens = tokenId.split(ETokenPrefix.TK.getCode());
-    // userId = tokens[0];
-    // }
-    // return userId;
-    // }
 }

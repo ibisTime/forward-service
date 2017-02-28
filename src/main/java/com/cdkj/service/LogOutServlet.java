@@ -63,4 +63,5 @@ public class LogOutServlet extends HttpServlet {
         writer.append(JsonUtils.object2Json(rm));
         writer.flush();
     }
+
 }
