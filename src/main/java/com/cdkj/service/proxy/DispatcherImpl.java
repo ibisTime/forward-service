@@ -62,7 +62,8 @@ public class DispatcherImpl implements IDispatcher {
             // 5、登录接口，组装token返回
             if ("805041".equals(transcode) || "805043".equals(transcode)
                     || "805152".equals(transcode) || "805182".equals(transcode)
-                    || "805183".equals(transcode)) {
+                    || "805183".equals(transcode) || "618920".equals(transcode)) {// 618920
+                                                                                  // 来来旺旺注册送积分
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 String userId = String.valueOf(resultMap.get("userId"));

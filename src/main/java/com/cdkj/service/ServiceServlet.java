@@ -37,8 +37,8 @@ public class ServiceServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         logger.info("Successful Deployment");
         PrintWriter writer = response.getWriter();
-        writer.append("Version:2.0.0 \n");
-        writer.append("Description:5th \n");
+        writer.append("Version:1.0.0 \n");
+        writer.append("Description:9th \n");
         writer.flush();
     }
 
