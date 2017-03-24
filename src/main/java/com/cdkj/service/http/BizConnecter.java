@@ -28,15 +28,19 @@ public class BizConnecter {
 
     public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
 
+    public static final String FORUM_URL = PropertiesUtil.Config.FORUM_URL;
+
     public static final String GAME_URL = PropertiesUtil.Config.GAME_URL;
 
-    public static final String MALL_URL = PropertiesUtil.Config.MALL_URL;
+    public static final String ZHPAY_URL = PropertiesUtil.Config.ZHPAY_URL;
 
     public static final String RIDE_URL = PropertiesUtil.Config.RIDE_URL;
 
     public static final String LOAN_URL = PropertiesUtil.Config.LOAN_URL;
 
     public static final String TOUR_URL = PropertiesUtil.Config.TOUR_URL;
+
+    public static final String PIPE_URL = PropertiesUtil.Config.PIPE_URL;
 
     public static String getBizData(String code, String json) {
         String data = null;
@@ -75,13 +79,17 @@ public class BizConnecter {
         } else if (code.startsWith("804")) {
             postUrl = SMS_URL;
         } else if (code.startsWith("808")) {
-            postUrl = MALL_URL;
+            postUrl = ZHPAY_URL;
+        } else if (code.startsWith("610")) {
+            postUrl = FORUM_URL;
         } else if (code.startsWith("616")) {
             postUrl = RIDE_URL;
         } else if (code.startsWith("617")) {
             postUrl = LOAN_URL;
         } else if (code.startsWith("618")) {
             postUrl = TOUR_URL;
+        } else if (code.startsWith("619")) {
+            postUrl = PIPE_URL;
         }
         return postUrl;
     }

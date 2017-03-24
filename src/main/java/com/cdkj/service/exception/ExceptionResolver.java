@@ -48,13 +48,15 @@ public class ExceptionResolver extends SimpleMappingExceptionResolver {
         /** 错误信息转换：如果是体系内异常则使用错误号寻找错误信息，体系外的不处理 */
         convertErrorMessage(request, exception);
         /** 如果请求是ajax的，则将异常信息字符串直接输出 */
-        if (isAjaxRequest(request, handler)) {
-            return doResolveAjaxException(response, exception);
-        }
+        return doResolveAjaxException(response, exception);
+        // if (isAjaxRequest(request, handler)) {
+        // return doResolveAjaxException(response, exception);
+        // }
         /** 使用spring mvc自带的异常处理 */
         // 设置异常信息到Message对象中
-        exception.toMessage();
-        return super.doResolveException(request, response, handler, exception);
+        // exception.toMessage();
+        // return super.doResolveException(request, response, handler,
+        // exception);
     }
 
     /**
