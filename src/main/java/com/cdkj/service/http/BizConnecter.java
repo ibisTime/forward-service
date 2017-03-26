@@ -70,7 +70,7 @@ public class BizConnecter {
     public static String getPostUrl(String code) {
         String postUrl = null;
         if (code.startsWith("805") || code.startsWith("806")
-                || code.startsWith("807")) {
+                || code.startsWith("807") || code.startsWith("001")) {
             postUrl = USER_URL;
         } else if (code.startsWith("802")) {
             postUrl = ACCOUNT_URL;
@@ -82,6 +82,8 @@ public class BizConnecter {
             postUrl = ZHPAY_URL;
         } else if (code.startsWith("610")) {
             postUrl = FORUM_URL;
+        } else if (code.startsWith("615")) {
+            postUrl = ZHPAY_URL;
         } else if (code.startsWith("616")) {
             postUrl = RIDE_URL;
         } else if (code.startsWith("617")) {
