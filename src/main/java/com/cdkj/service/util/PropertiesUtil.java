@@ -41,8 +41,8 @@ public class PropertiesUtil {
 
         public static String PIPE_URL = props.getProperty("PIPE_URL");
 
-        public static String MALL_URL = props.getProperty("FORUM_URL");
+        public static String MALL_URL = props.getProperty("MALL_URL");
 
-        public static String FORUM_URL = props.getProperty("MALL_URL");
+        public static String FORUM_URL = props.getProperty("FORUM_URL");
     }
 }
