@@ -32,5 +32,5 @@ T6dh%$%$ss1
   ../bin/shutdown.sh
   ../bin/startup.sh
   
-  http://121.43.101.148:5601/forward-service/api
+  http://121.43.101.148:8901/forward-service/api
   
