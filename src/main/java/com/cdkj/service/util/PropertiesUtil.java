@@ -46,5 +46,7 @@ public class PropertiesUtil {
         public static String FORUM_URL = props.getProperty("FORUM_URL");
 
         public static String DZT_URL = props.getProperty("DZT_URL");
+
+        public static String ACTIVITY_URL = props.getProperty("ACTIVITY_URL");
     }
 }

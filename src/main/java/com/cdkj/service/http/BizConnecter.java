@@ -46,6 +46,8 @@ public class BizConnecter {
 
     public static final String DZT_URL = PropertiesUtil.Config.DZT_URL;
 
+    public static final String ACTIVITY_URL = PropertiesUtil.Config.ACTIVITY_URL;
+
     public static String getBizData(String code, String json) {
         String data = null;
         String resJson = null;
@@ -98,6 +100,8 @@ public class BizConnecter {
             postUrl = PIPE_URL;
         } else if (code.startsWith("620")) {
             postUrl = DZT_URL;
+        } else if (code.startsWith("620")) {
+            postUrl = ACTIVITY_URL;
         }
         return postUrl;
     }
