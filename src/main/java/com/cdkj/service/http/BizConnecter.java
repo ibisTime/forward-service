@@ -100,7 +100,7 @@ public class BizConnecter {
             postUrl = PIPE_URL;
         } else if (code.startsWith("620")) {
             postUrl = DZT_URL;
-        } else if (code.startsWith("620")) {
+        } else if (code.startsWith("660")) {
             postUrl = ACTIVITY_URL;
         }
         return postUrl;
