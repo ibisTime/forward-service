@@ -56,19 +56,34 @@
 	  <code>807711</code> 
    <!-- 用户模块拦截功能号end--> 
    <!-- 账户模块拦截功能号start-->
+	  <code>802400</code> 
+	  <code>802401</code> 
+	  <code>802402</code> 
+	  <code>802403</code> 
+      <code>802410</code> 
+	  <code>802411</code> 
+	  <code>802412</code> 
+	  <code>802415</code> 
+	  <code>802416</code> 
+	  <code>802501</code> 
+	  <code>802502</code> 
       <code>802503</code> 
 	  <code>802510</code> 
-	  <code>802526</code> 
 	  <code>802511</code> 
+	  <code>802512</code> 
+	  <code>802513</code> 
 	  <code>802514</code> 
 	  <code>802515</code> 
-	  <code>802516</code> 
+	  <code>802516</code>
+	  <code>802518</code> 
 	  <code>802520</code> 
 	  <code>802521</code> 
-	  <code>802522</code> 
+	  <code>802522</code>
+	  <code>802523</code> 
 	  <code>802524</code> 
+	  <code>802525</code> 
+	  <code>802526</code> 
 	  <code>802530</code> 
-	  <code>802518</code> 
    <!-- 账户模块拦截功能号end--> 
    <!-- 骑来骑去业务模块拦截功能号start--> 
       <code>616100</code> 
