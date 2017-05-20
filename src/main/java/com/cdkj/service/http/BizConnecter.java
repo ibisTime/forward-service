@@ -8,6 +8,7 @@
  */
 package com.cdkj.service.http;
 
+import java.util.Date;
 import java.util.Properties;
 
 import com.cdkj.service.exception.BizException;
@@ -63,8 +64,9 @@ public class BizConnecter {
         // 开始解析响应json
         String errorCode = RegexUtils.find(resJson, "errorCode\":\"(.+?)\"", 1);
         String errorInfo = RegexUtils.find(resJson, "errorInfo\":\"(.+?)\"", 1);
-        System.out.println("request:" + code + " with parameters " + json
-                + "\nresponse:" + errorCode + "<" + errorInfo + ">.");
+        System.out.println("post_date:" + new Date() + "request:" + code
+                + " with parameters " + json + "\nresponse:" + errorCode + "<"
+                + errorInfo + ">.");
         if (YES.equalsIgnoreCase(errorCode)) {
             data = RegexUtils.find(resJson, "data\":(.*)\\}", 1);
         } else {
