@@ -78,6 +78,15 @@ public class DispatcherImpl implements IDispatcher {
                     tokenDAO.saveToken(new Token(tokenId));
                 }
             }
+            // if (inputParams != null) {
+            // Map<String, Object> resultMap = JsonUtils.json2Bean(
+            // inputParams, Map.class);
+            // if (resultMap.get("systemCode").equals("CD-CCSW000008")) {
+            // if (null != resultMap.get("companyCode")) {
+            // BizConnecter.getBizData("610400", inputParams);
+            // }
+            // }
+            // }
             Object data = JsonUtils.json2Bean(resultData, Object.class);
             rm.setErrorCode(EErrorCode.SUCCESS.getCode());
             rm.setErrorInfo(EErrorCode.SUCCESS.getValue());

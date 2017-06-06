@@ -35,6 +35,9 @@ public class ServiceServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(request.getRequestURL());
+        System.out.println(request.getServletPath());
+        System.out.println(request.getQueryString());
         logger.info("Successful Deployment");
         PrintWriter writer = response.getWriter();
         writer.append("Version:3.0.2 \n");
