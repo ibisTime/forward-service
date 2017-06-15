@@ -48,5 +48,9 @@ public class PropertiesUtil {
         public static String DZT_URL = props.getProperty("DZT_URL");
 
         public static String ACTIVITY_URL = props.getProperty("ACTIVITY_URL");
+
+        public static String SERVICE_URL = props.getProperty("SERVICE_URL");
+
+        public static String HEALTH_URL = props.getProperty("HEALTH_URL");
     }
 }
