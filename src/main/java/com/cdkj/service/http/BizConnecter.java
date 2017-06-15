@@ -51,6 +51,8 @@ public class BizConnecter {
 
     public static final String SERVICE_URL = PropertiesUtil.Config.SERVICE_URL;
 
+    public static final String HEALTH_URL = PropertiesUtil.Config.HEALTH_URL;
+
     public static String getBizData(String code, String json) {
         String data = null;
         String resJson = null;
@@ -108,6 +110,8 @@ public class BizConnecter {
             postUrl = ACTIVITY_URL;
         } else if (code.startsWith("612")) {
             postUrl = SERVICE_URL;
+        } else if (code.startsWith("621")) {
+            postUrl = HEALTH_URL;
         }
         return postUrl;
     }
