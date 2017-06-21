@@ -40,7 +40,7 @@ public class ServiceServlet extends HttpServlet {
         System.out.println(request.getQueryString());
         logger.info("Successful Deployment");
         PrintWriter writer = response.getWriter();
-        writer.append("Version:3.1.0 \n");
+        writer.append("Version:2.0.0 \n");
         writer.append("Description:3rd\n");
         writer.flush();
     }
