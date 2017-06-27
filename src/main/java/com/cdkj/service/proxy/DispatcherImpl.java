@@ -63,8 +63,8 @@ public class DispatcherImpl implements IDispatcher {
             if ("805041".equals(transcode) || "805043".equals(transcode)
                     || "805151".equals(transcode) || "805152".equals(transcode)
                     || "805182".equals(transcode) || "805183".equals(transcode)
-                    || "618920".equals(transcode) || "805154".equals(transcode)) {// 618920
-                // 来来旺旺注册送积分
+                    || "618920".equals(transcode) || "805154".equals(transcode)
+                    || "612050".equals(transcode)) {// 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 if (null != resultMap.get("userId")) {
@@ -78,15 +78,6 @@ public class DispatcherImpl implements IDispatcher {
                     tokenDAO.saveToken(new Token(tokenId));
                 }
             }
-            // if (inputParams != null) {
-            // Map<String, Object> resultMap = JsonUtils.json2Bean(
-            // inputParams, Map.class);
-            // if (resultMap.get("systemCode").equals("CD-CCSW000008")) {
-            // if (null != resultMap.get("companyCode")) {
-            // BizConnecter.getBizData("610400", inputParams);
-            // }
-            // }
-            // }
             Object data = JsonUtils.json2Bean(resultData, Object.class);
             rm.setErrorCode(EErrorCode.SUCCESS.getCode());
             rm.setErrorInfo(EErrorCode.SUCCESS.getValue());
