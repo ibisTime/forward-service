@@ -4,7 +4,7 @@ package com.cdkj.service.session;
  * 
  * <一句话功能简述> 会员抽象类，子类会员对象比较继承此对象，否则无法放入会话中 <功能详细描述>
  * 
- * @author zhanggl10620
+ * 
  * @version [version 1.0, 2014-7-30]
  * @see [相关类/方法]
  * @since [产品/模块版本]

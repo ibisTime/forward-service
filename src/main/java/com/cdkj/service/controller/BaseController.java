@@ -1,11 +1,3 @@
-/**
- * @Title BaseController.java 
- * @Package com.hsnet.pz.controller 
- * @Description 
- * @author miyb  
- * @date 2014-8-19 上午10:54:17 
- * @version V1.0   
- */
 package com.cdkj.service.controller;
 
 import java.io.IOException;

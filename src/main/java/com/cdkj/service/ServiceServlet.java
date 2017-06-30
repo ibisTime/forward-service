@@ -14,11 +14,6 @@ import com.cdkj.service.proxy.DispatcherImpl;
 import com.cdkj.service.proxy.IDispatcher;
 import com.cdkj.service.spring.SpringContextHolder;
 
-/**
- * @author: xieyj 
- * @since: 2016年12月14日 下午12:55:40 
- * @history:
- */
 public class ServiceServlet extends HttpServlet {
     static Logger logger = Logger.getLogger(ServiceServlet.class);
 
@@ -37,8 +32,8 @@ public class ServiceServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         logger.info("Successful Deployment");
         PrintWriter writer = response.getWriter();
-        writer.append("Version:2.0.0 \n");
-        writer.append("Description:3rd\n");
+        writer.append("Version:3.4.0 \n");
+        writer.append("Description:2nd\n");
         writer.flush();
     }
 

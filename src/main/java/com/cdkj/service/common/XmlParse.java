@@ -1,11 +1,3 @@
-/**
- * @Title XmlParse.java 
- * @Package com.cdkj.service.common 
- * @Description 
- * @author xieyj  
- * @date 2016年12月14日 下午3:03:42 
- * @version V1.0   
- */
 package com.cdkj.service.common;
 
 import java.io.File;
@@ -18,11 +10,6 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-/** 
- * @author: xieyj 
- * @since: 2016年12月14日 下午3:03:42 
- * @history:
- */
 public class XmlParse {
 
     /**

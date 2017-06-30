@@ -2,7 +2,6 @@
  * @Title RegularExpUtils.java 
  * @Package com.ibis.pz.util 
  * @Description 
- * @author miyb  
  * @date 2015-5-13 上午10:47:43 
  * @version V1.0   
  */
@@ -12,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /** 
- * @author: miyb 
+ *  
  * @since: 2015-5-13 上午10:47:43 
  * @history:
  */

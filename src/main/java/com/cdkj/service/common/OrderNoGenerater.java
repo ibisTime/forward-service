@@ -4,11 +4,6 @@ import java.util.Random;
 
 import com.cdkj.service.util.DateUtil;
 
-/**
- * @author: xieyj 
- * @since: 2016年12月18日 下午9:45:00 
- * @history:
- */
 public class OrderNoGenerater {
 
     /**

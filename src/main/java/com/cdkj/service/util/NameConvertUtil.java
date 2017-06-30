@@ -2,7 +2,7 @@
  * @Title NameFormatConverter.java 
  * @Package com.xnjr.pop.common 
  * @Description 
- * @author xieyj  
+ *   
  * @date 2015年12月17日 上午9:48:21 
  * @version V1.0   
  */
@@ -10,7 +10,7 @@ package com.cdkj.service.util;
 
 /** 
  * 字段命名规则转换(驼峰和下划线互转)
- * @author: xieyj 
+ *  
  * @since: 2015年12月17日 上午9:48:21 
  * @history:
  */

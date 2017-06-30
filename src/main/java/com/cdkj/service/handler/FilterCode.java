@@ -1,11 +1,3 @@
-/**
- * @Title FilterCode.java 
- * @Package com.cdkj.service.handler 
- * @Description 
- * @author xieyj  
- * @date 2016年12月14日 下午1:14:50 
- * @version V1.0   
- */
 package com.cdkj.service.handler;
 
 import java.io.File;
@@ -16,11 +8,6 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-/** 
- * @author: xieyj 
- * @since: 2016年12月14日 下午1:14:50 
- * @history:
- */
 public class FilterCode {
 
     public boolean isVisitNeedToken(String functionCode) {
