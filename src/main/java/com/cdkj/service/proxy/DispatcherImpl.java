@@ -63,8 +63,8 @@ public class DispatcherImpl implements IDispatcher {
             if ("805041".equals(transcode) || "805043".equals(transcode)
                     || "805151".equals(transcode) || "805152".equals(transcode)
                     || "805182".equals(transcode) || "805183".equals(transcode)
-                    || "618920".equals(transcode) || "612050".equals(transcode)) {// 618920
-                // 来来旺旺注册送积分 612050 公共服务平台公司注册
+                    || "618920".equals(transcode) || "805154".equals(transcode)
+                    || "612050".equals(transcode)) {// 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 if (null != resultMap.get("userId")) {
