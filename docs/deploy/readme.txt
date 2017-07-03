@@ -17,7 +17,7 @@ T6dh%$%$ss1
 2，部署
   ssh root@121.43.101.148 -p 22
   
-  cd /home/wwwroot/zhpay/tomcat_forward_service/webapps
+  cd /m/wwwroot/zhpay/tomcat_forward_service/webapps
   
   cd /home/wwwroot/common/tomcat_forward_service/webapps
   
