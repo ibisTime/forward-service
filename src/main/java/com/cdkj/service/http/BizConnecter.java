@@ -65,7 +65,7 @@ public class BizConnecter {
         if (YES.equalsIgnoreCase(errorCode)) {
             data = RegexUtils.find(resJson, "data\":(.*)\\}", 1);
         } else {
-            throw new BizException("Biz000", errorInfo);
+            throw new BizException(errorCode, errorInfo);
         }
         return data;
     }

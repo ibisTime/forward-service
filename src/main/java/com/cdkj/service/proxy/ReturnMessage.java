@@ -4,6 +4,8 @@ public class ReturnMessage {
 
     private String errorCode;
 
+    private String errorBizCode;
+
     private String errorInfo;
 
     // 方法调用返回结果
@@ -15,6 +17,14 @@ public class ReturnMessage {
 
     public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
+    }
+
+    public String getErrorBizCode() {
+        return errorBizCode;
+    }
+
+    public void setErrorBizCode(String errorBizCode) {
+        this.errorBizCode = errorBizCode;
     }
 
     public String getErrorInfo() {
@@ -32,5 +42,4 @@ public class ReturnMessage {
     public void setData(Object data) {
         this.data = data;
     }
-
 }

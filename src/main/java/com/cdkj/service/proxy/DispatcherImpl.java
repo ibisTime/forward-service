@@ -88,25 +88,28 @@ public class DispatcherImpl implements IDispatcher {
         } catch (Exception e) {
             if (e instanceof TokenException) {
                 rm.setErrorCode(EErrorCode.TOKEN_ERR.getCode());
+                rm.setErrorBizCode(((TokenException) e).getErrorCode());
                 rm.setErrorInfo(((TokenException) e).getErrorMessage());
                 rm.setData("");
             } else if (e instanceof BizException) {
                 rm.setErrorCode(EErrorCode.BIZ_ERR.getCode());
+                rm.setErrorBizCode(((BizException) e).getErrorCode());
                 rm.setErrorInfo(((BizException) e).getErrorMessage());
                 rm.setData("");
             } else if (e instanceof ParaException) {
                 rm.setErrorCode(EErrorCode.PARA_ERR.getCode());
+                rm.setErrorBizCode(((ParaException) e).getErrorCode());
                 rm.setErrorInfo(((ParaException) e).getErrorMessage());
                 rm.setData("");
             } else if (e instanceof NullPointerException) {
                 rm.setErrorCode(EErrorCode.OTHER_ERR.getCode());
                 rm.setErrorInfo(e.getMessage());
-                rm.setErrorInfo("系统错误，请联系管理员");
+                // rm.setErrorInfo("系统错误，请联系管理员");
                 rm.setData("");
             } else {
                 rm.setErrorCode(EErrorCode.OTHER_ERR.getCode());
                 rm.setErrorInfo(e.getMessage());
-                rm.setErrorInfo("系统错误，请联系管理员");
+                // rm.setErrorInfo("系统错误，请联系管理员");
                 rm.setData("");
             }
         } finally {
