@@ -23,6 +23,7 @@ public class PropertiesUtil {
     }
 
     public static final class Config {
+
         public static String USER_URL = props.getProperty("USER_URL");
 
         public static String ACCOUNT_URL = props.getProperty("ACCOUNT_URL");
@@ -52,5 +53,10 @@ public class PropertiesUtil {
         public static String SERVICE_URL = props.getProperty("SERVICE_URL");
 
         public static String HEALTH_URL = props.getProperty("HEALTH_URL");
+
+        public static String YC_MALL_URL = props.getProperty("YC_MALL_URL");
+
+        public static String GYM_URL = props.getProperty("GYM_URL");
+
     }
 }
