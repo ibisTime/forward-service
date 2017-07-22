@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 /**
  * 控制器上下，用于获取httpservletrequest,httpservletRespose
  * 使用本地线程实现
- * @author: zhanggl10620 
  * @since: 2014-8-11 下午5:30:52 
  * @history:
  */

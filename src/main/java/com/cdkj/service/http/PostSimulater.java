@@ -2,7 +2,6 @@
  * @Title NetUtils.java 
  * @Package com.ibis.pz.http 
  * @Description 
- * @author miyb  
  * @date 2015-5-12 下午4:34:54 
  * @version V1.0   
  */
@@ -20,7 +19,6 @@ import java.util.Map;
 import java.util.Properties;
 
 /** 
- * @author: miyb 
  * @since: 2015-5-12 下午4:34:54 
  * @history:
  */

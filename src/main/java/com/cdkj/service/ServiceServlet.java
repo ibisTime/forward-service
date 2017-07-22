@@ -14,11 +14,6 @@ import com.cdkj.service.proxy.DispatcherImpl;
 import com.cdkj.service.proxy.IDispatcher;
 import com.cdkj.service.spring.SpringContextHolder;
 
-/**
- * @author: xieyj 
- * @since: 2016年12月14日 下午12:55:40 
- * @history:
- */
 public class ServiceServlet extends HttpServlet {
     static Logger logger = Logger.getLogger(ServiceServlet.class);
 
@@ -39,6 +34,9 @@ public class ServiceServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         writer.append("Version:1.0.0 \n");
         writer.append("Description:1st \n");
+        writer.append("以下是正汇钱包  \n");
+        writer.append("Version:3.5.0 \n");
+        writer.append("Description:1st\n");
         writer.flush();
     }
 

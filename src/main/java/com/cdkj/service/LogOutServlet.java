@@ -20,7 +20,7 @@ import com.cdkj.service.token.impl.TokenDAOImpl;
 
 /**
  * 退出登录状态
- * @author: xieyj 
+ *  
  * @since: 2016年12月14日 下午12:55:40 
  * @history:
  */

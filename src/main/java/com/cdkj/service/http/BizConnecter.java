@@ -1,11 +1,3 @@
-/**
- * @Title BizConnecter.java 
- * @Package com.ibis.pz.http 
- * @Description 
- * @author miyb  
- * @date 2015-5-12 下午9:44:59 
- * @version V1.0   
- */
 package com.cdkj.service.http;
 
 import java.util.Properties;
@@ -16,11 +8,6 @@ import com.cdkj.service.exception.BizException;
 import com.cdkj.service.util.PropertiesUtil;
 import com.cdkj.service.util.RegexUtils;
 
-/** 
- * @author: miyb 
- * @since: 2015-5-12 下午9:44:59 
- * @history:
- */
 public class BizConnecter {
 
     private static Logger logger = Logger.getLogger(BizConnecter.class);
@@ -82,7 +69,7 @@ public class BizConnecter {
         if (YES.equalsIgnoreCase(errorCode)) {
             data = RegexUtils.find(resJson, "data\":(.*)\\}", 1);
         } else {
-            throw new BizException("Biz000", errorInfo);
+            throw new BizException(errorCode, errorInfo);
         }
         return data;
     }

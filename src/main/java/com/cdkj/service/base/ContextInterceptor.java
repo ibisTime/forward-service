@@ -11,7 +11,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
  * 上下文拦截器
- * @author: zhanggl10620 
  * @since: 2014-8-11 下午3:31:59 
  * @history:
  */

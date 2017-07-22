@@ -2,7 +2,6 @@
  * @Title MD5Util.java 
  * @Package com.ibis.account.common 
  * @Description 
- * @author miyb  
  * @date 2015-2-26 下午4:54:49 
  * @version V1.0   
  */
@@ -12,7 +11,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /** 
- * @author: miyb 
+ *  
  * @since: 2015-2-26 下午4:54:49 
  * @history:
  */

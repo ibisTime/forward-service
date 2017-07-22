@@ -2,7 +2,6 @@
  * @Title PwdUtils.java 
  * @Package com.hsnet.pz.ao.util 
  * @Description 
- * @author miyb  
  * @date 2014-8-19 上午11:27:12 
  * @version V1.0   
  */
@@ -11,7 +10,6 @@ package com.cdkj.service.util;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * @author: XIANDONG 
  * @since: 2016年4月19日 上午11:41:51 
  * @history:
  */

@@ -1,11 +1,3 @@
-/**
- * @Title BizException.java 
- * @Package com.ibis.account.exception 
- * @Description 
- * @author miyb  
- * @date 2015-5-16 下午1:30:31 
- * @version V1.0   
- */
 package com.cdkj.service.exception;
 
 import java.util.ArrayList;
@@ -16,11 +8,6 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-/** 
- * @author: miyb 
- * @since: 2015-5-16 下午1:30:31 
- * @history:
- */
 public class BizException extends RuntimeException {
     private static final long serialVersionUID = -6853310712844466349L;
 

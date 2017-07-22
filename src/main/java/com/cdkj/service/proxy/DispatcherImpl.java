@@ -63,8 +63,8 @@ public class DispatcherImpl implements IDispatcher {
             if ("805041".equals(transcode) || "805043".equals(transcode)
                     || "805151".equals(transcode) || "805152".equals(transcode)
                     || "805182".equals(transcode) || "805183".equals(transcode)
-                    || "618920".equals(transcode) || "612050".equals(transcode)) {// 618920
-                // 来来旺旺注册送积分 612050 公共服务平台公司注册
+                    || "618920".equals(transcode) || "618922".equals(transcode)
+                    || "805154".equals(transcode) || "612050".equals(transcode)) {// 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 if (null != resultMap.get("userId")) {
@@ -88,25 +88,28 @@ public class DispatcherImpl implements IDispatcher {
         } catch (Exception e) {
             if (e instanceof TokenException) {
                 rm.setErrorCode(EErrorCode.TOKEN_ERR.getCode());
+                rm.setErrorBizCode(((TokenException) e).getErrorCode());
                 rm.setErrorInfo(((TokenException) e).getErrorMessage());
                 rm.setData("");
             } else if (e instanceof BizException) {
                 rm.setErrorCode(EErrorCode.BIZ_ERR.getCode());
+                rm.setErrorBizCode(((BizException) e).getErrorCode());
                 rm.setErrorInfo(((BizException) e).getErrorMessage());
                 rm.setData("");
             } else if (e instanceof ParaException) {
                 rm.setErrorCode(EErrorCode.PARA_ERR.getCode());
+                rm.setErrorBizCode(((ParaException) e).getErrorCode());
                 rm.setErrorInfo(((ParaException) e).getErrorMessage());
                 rm.setData("");
             } else if (e instanceof NullPointerException) {
                 rm.setErrorCode(EErrorCode.OTHER_ERR.getCode());
                 rm.setErrorInfo(e.getMessage());
-                rm.setErrorInfo("系统错误，请联系管理员");
+                // rm.setErrorInfo("系统错误，请联系管理员");
                 rm.setData("");
             } else {
                 rm.setErrorCode(EErrorCode.OTHER_ERR.getCode());
                 rm.setErrorInfo(e.getMessage());
-                rm.setErrorInfo("系统错误，请联系管理员");
+                // rm.setErrorInfo("系统错误，请联系管理员");
                 rm.setData("");
             }
         } finally {

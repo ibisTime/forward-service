@@ -11,9 +11,6 @@ import com.cdkj.service.session.SessionUser;
 
 /**
  * 跳转页面Controller
- * 
- * @author zhanggl10620
- * 
  */
 @Controller
 public class PageController {

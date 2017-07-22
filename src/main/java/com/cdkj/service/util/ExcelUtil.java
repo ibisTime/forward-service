@@ -2,7 +2,7 @@
  * @Title ExcelUtil.java 
  * @Package com.xnjr.app.util 
  * @Description 
- * @author xieyj  
+ *   
  * @date 2015年12月9日 下午7:03:41 
  * @version V1.0   
  */
@@ -33,7 +33,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 
 /** 
- * @author: xieyj 
+ *  
  * @since: 2015年12月9日 下午7:03:41 
  * @history:
  */

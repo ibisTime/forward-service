@@ -2,7 +2,6 @@
  * @Title SessionUser.java 
  * @Package com.hsnet.pz.session 
  * @Description 
- * @author miyb  
  * @date 2014-8-19 下午4:46:22 
  * @version V1.0   
  */
