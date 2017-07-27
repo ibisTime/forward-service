@@ -18,6 +18,8 @@ public class BizConnecter {
 
     public static final String ACCOUNT_URL = PropertiesUtil.Config.ACCOUNT_URL;
 
+    public static final String CERTI_URL = PropertiesUtil.Config.CERTI_URL;
+
     public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
 
     public static final String FORUM_URL = PropertiesUtil.Config.FORUM_URL;
@@ -109,6 +111,8 @@ public class BizConnecter {
             postUrl = HEALTH_URL;
         } else if (code.startsWith("622")) {
             postUrl = GYM_URL;
+        } else if (code.startsWith("798")) {
+            postUrl = CERTI_URL;
         }
         return postUrl;
     }

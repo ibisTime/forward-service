@@ -30,6 +30,8 @@ public class PropertiesUtil {
 
         public static String SMS_URL = props.getProperty("SMS_URL");
 
+        public static String CERTI_URL = props.getProperty("CERTI_URL");
+
         public static String ZHPAY_URL = props.getProperty("ZHPAY_URL");
 
         public static String RIDE_URL = props.getProperty("RIDE_URL");
