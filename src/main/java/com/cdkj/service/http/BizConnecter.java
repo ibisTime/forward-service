@@ -50,6 +50,8 @@ public class BizConnecter {
 
     public static final String GYM_URL = PropertiesUtil.Config.GYM_URL;
 
+    public static final String YLQ_URL = PropertiesUtil.Config.YLQ_URL;
+
     public static String getBizData(String code, String json) {
         String data = null;
         String resJson = null;
@@ -111,6 +113,8 @@ public class BizConnecter {
             postUrl = HEALTH_URL;
         } else if (code.startsWith("622")) {
             postUrl = GYM_URL;
+        } else if (code.startsWith("623")) {
+            postUrl = YLQ_URL;
         } else if (code.startsWith("798")) {
             postUrl = CERTI_URL;
         }

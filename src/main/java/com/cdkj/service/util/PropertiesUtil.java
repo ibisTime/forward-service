@@ -60,5 +60,7 @@ public class PropertiesUtil {
 
         public static String GYM_URL = props.getProperty("GYM_URL");
 
+        public static String YLQ_URL = props.getProperty("YLQ_URL");
+
     }
 }
