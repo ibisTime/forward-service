@@ -46,8 +46,6 @@ public class BizConnecter {
 
     public static final String HEALTH_URL = PropertiesUtil.Config.HEALTH_URL;
 
-    public static final String YC_MALL_URL = PropertiesUtil.Config.YC_MALL_URL;
-
     public static final String GYM_URL = PropertiesUtil.Config.GYM_URL;
 
     public static String getBizData(String code, String json) {
@@ -88,7 +86,7 @@ public class BizConnecter {
         } else if (code.startsWith("804")) {
             postUrl = SMS_URL;
         } else if (code.startsWith("808")) {
-            postUrl = YC_MALL_URL;
+            postUrl = MALL_URL;
         } else if (code.startsWith("610")) {
             postUrl = FORUM_URL;
         } else if (code.startsWith("615")) {
