@@ -8,7 +8,6 @@
       <code>805153</code> 
       <code>805047</code> 
       <code>805049</code> 
-      <code>805050</code> 
       <code>805057</code> 
       <code>805051</code> 
       <code>805052</code> 
@@ -90,18 +89,4 @@
 	  <code>802806</code> 
 	  <code>802807</code> 
    <!-- 账户模块拦截功能号end--> 
-   <!-- 骑来骑去业务模块拦截功能号start--> 
-      <code>616100</code> 
-      <code>616101</code> 
-      <code>616211</code> 
-      <code>616102</code> 
-      <code>616130</code> 
-      <code>616131</code> 
-      <code>616132</code> 
-      <code>616180</code> 
-      <code>616181</code> 
-      <code>616182</code> 
-      <code>616183</code> 
-      <code>616184</code> 
-   <!-- 骑来骑去业务模块拦截功能号end--> 
 </filterCodes> 
