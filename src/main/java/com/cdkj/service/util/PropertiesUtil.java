@@ -32,21 +32,17 @@ public class PropertiesUtil {
 
         public static String CERTI_URL = props.getProperty("CERTI_URL");
 
-        public static String ZHPAY_URL = props.getProperty("ZHPAY_URL");
+        public static String CORE_URL = props.getProperty("CORE_URL");
 
-        public static String RIDE_URL = props.getProperty("RIDE_URL");
+        public static String ZHPAY_URL = props.getProperty("ZHPAY_URL");
 
         public static String LOAN_URL = props.getProperty("LOAN_URL");
 
         public static String TOUR_URL = props.getProperty("TOUR_URL");
 
-        public static String GAME_URL = props.getProperty("GAME_URL");
-
         public static String PIPE_URL = props.getProperty("PIPE_URL");
 
         public static String MALL_URL = props.getProperty("MALL_URL");
-
-        public static String FORUM_URL = props.getProperty("FORUM_URL");
 
         public static String DZT_URL = props.getProperty("DZT_URL");
 
@@ -59,6 +55,8 @@ public class PropertiesUtil {
         public static String YC_MALL_URL = props.getProperty("YC_MALL_URL");
 
         public static String GYM_URL = props.getProperty("GYM_URL");
+
+        public static String RENT_URL = props.getProperty("RENT_URL");
 
     }
 }

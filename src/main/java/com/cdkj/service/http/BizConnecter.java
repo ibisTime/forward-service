@@ -22,15 +22,11 @@ public class BizConnecter {
 
     public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
 
-    public static final String FORUM_URL = PropertiesUtil.Config.FORUM_URL;
-
-    public static final String GAME_URL = PropertiesUtil.Config.GAME_URL;
+    public static final String CORE_URL = PropertiesUtil.Config.CORE_URL;
 
     public static final String ZHPAY_URL = PropertiesUtil.Config.ZHPAY_URL;
 
     public static final String MALL_URL = PropertiesUtil.Config.MALL_URL;
-
-    public static final String RIDE_URL = PropertiesUtil.Config.RIDE_URL;
 
     public static final String LOAN_URL = PropertiesUtil.Config.LOAN_URL;
 
@@ -47,6 +43,8 @@ public class BizConnecter {
     public static final String HEALTH_URL = PropertiesUtil.Config.HEALTH_URL;
 
     public static final String GYM_URL = PropertiesUtil.Config.GYM_URL;
+
+    public static final String RENT_URL = PropertiesUtil.Config.RENT_URL;
 
     public static String getBizData(String code, String json) {
         String data = null;
@@ -81,18 +79,14 @@ public class BizConnecter {
             postUrl = USER_URL;
         } else if (code.startsWith("802") || code.startsWith("002")) {
             postUrl = ACCOUNT_URL;
-        } else if (code.startsWith("803")) {
-            postUrl = GAME_URL;
         } else if (code.startsWith("804")) {
             postUrl = SMS_URL;
         } else if (code.startsWith("808")) {
             postUrl = MALL_URL;
-        } else if (code.startsWith("610")) {
-            postUrl = FORUM_URL;
+        } else if (code.startsWith("801")) {
+            postUrl = CORE_URL;
         } else if (code.startsWith("615")) {
             postUrl = ZHPAY_URL;
-        } else if (code.startsWith("616")) {
-            postUrl = RIDE_URL;
         } else if (code.startsWith("617")) {
             postUrl = LOAN_URL;
         } else if (code.startsWith("618")) {
@@ -111,6 +105,8 @@ public class BizConnecter {
             postUrl = GYM_URL;
         } else if (code.startsWith("798")) {
             postUrl = CERTI_URL;
+        } else if (code.startsWith("810")) {
+            postUrl = RENT_URL;
         }
         return postUrl;
     }
