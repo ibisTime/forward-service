@@ -17,15 +17,14 @@ T6dh%$%$ss1
 2，部署
   ssh root@121.43.101.148 -p 22
   
-  cd /m/wwwroot/zhpay/tomcat_forward_service/webapps
+  cd /mnt/www/gym/tomcat_forward_service/webapps
   
   cd /home/wwwroot/common/tomcat_forward_service/webapps
   
   cp ./forward-service/WEB-INF/classes/config.properties .
-  
   rm -rf forward-service.war
   rm -rf forward-service
-  mv /home/forward-service.war .
+  mv /mnt/forward-service.war .
   
   mv -f config.properties ./forward-service/WEB-INF/classes/
   
