@@ -23,13 +23,11 @@ T6dh%$%$ss1
   
   cd /mnt/www/dzt/tomcat_forward_service/webapps
   cp ./forward-service/WEB-INF/classes/config.properties .
-  cp ./forward-service/WEB-INF/classes/application.properties .
   rm -rf forward-service.war
   rm -rf forward-service
   mv /mnt/forward-service.war .
   
   mv -f config.properties ./forward-service/WEB-INF/classes/
-  mv -f application.properties ./forward-service/WEB-INF/classes/
   ../bin/shutdown.sh
   ../bin/startup.sh
   

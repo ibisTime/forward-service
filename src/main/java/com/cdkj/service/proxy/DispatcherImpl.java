@@ -10,8 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cdkj.service.common.OrderNoGenerater;
 import com.cdkj.service.common.XmlParse;
+import com.cdkj.service.dto.req.XN001400Req;
+import com.cdkj.service.dto.res.XN001400Res;
 import com.cdkj.service.enums.EErrorCode;
 import com.cdkj.service.enums.ETokenPrefix;
+import com.cdkj.service.enums.EUserStatus;
 import com.cdkj.service.exception.BizException;
 import com.cdkj.service.exception.ParaException;
 import com.cdkj.service.exception.TokenException;
@@ -47,11 +50,12 @@ public class DispatcherImpl implements IDispatcher {
                 .getFile());
             Map<String, Object> codesMap = XmlParse.getNodeLists(file);
             // 3、需要token，判断是否正确
+            String tokenId = String.valueOf(map.get("token"));
             if (codesMap.containsKey(transcode)) {
-                String tokenId = String.valueOf(map.get("token"));
                 if (StringUtils.isBlank(tokenId) || "null".equals(tokenId)) {
                     throw new BizException("xn000000", "token不能为空");
                 }
+
                 Token token = tokenDAO.getToken(tokenId);
                 if (null == token) {
                     throw new TokenException("xn000000", "token失效，请重新登录");
@@ -70,13 +74,24 @@ public class DispatcherImpl implements IDispatcher {
                     Map.class);
                 if (null != resultMap.get("userId")) {
                     String userId = String.valueOf(resultMap.get("userId"));
-                    String tokenId = OrderNoGenerater
-                        .generateME(ETokenPrefix.TU.getCode() + userId
-                                + ETokenPrefix.TK.getCode()); // tokenId与userId相关联,保存在本地
+                    tokenId = OrderNoGenerater.generateME(ETokenPrefix.TU
+                        .getCode() + userId + ETokenPrefix.TK.getCode()); // tokenId与userId相关联,保存在本地
                     resultData = resultData.substring(0,
                         resultData.lastIndexOf("}"))
                             + ", \"token\":\"" + tokenId + "\"}";
                     tokenDAO.saveToken(new Token(tokenId));
+                }
+            }
+            if (StringUtils.isNotEmpty(tokenId)) {
+                String userId = tokenId.substring(1,
+                    tokenId.indexOf(ETokenPrefix.TK.getCode()));
+                XN001400Req req = new XN001400Req();
+                req.setTokenId(tokenId);
+                req.setUserId(userId);
+                XN001400Res res = BizConnecter.getBizData("001400",
+                    JsonUtils.object2Json(req), XN001400Res.class);
+                if (!EUserStatus.NORMAL.getCode().equals(res.getStatus())) {
+                    throw new TokenException("xn000000", "账号异常");
                 }
             }
             Object data = JsonUtils.json2Bean(resultData, Object.class);
