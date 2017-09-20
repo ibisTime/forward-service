@@ -82,7 +82,8 @@ public class DispatcherImpl implements IDispatcher {
                     tokenDAO.saveToken(new Token(tokenId));
                 }
             }
-            if (StringUtils.isNotEmpty(tokenId)) {
+            if (StringUtils.isBlank(tokenId) || "null".equals(tokenId)) {
+            } else {
                 String userId = tokenId.substring(1,
                     tokenId.indexOf(ETokenPrefix.TK.getCode()));
                 XN001400Req req = new XN001400Req();
