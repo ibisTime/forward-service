@@ -12,14 +12,16 @@
 部署步骤：
 1、包上传
 scp -P22 ./forward-service.war root@121.43.101.148:/home
-T6dh%$%$ss1
+cdkj123456Q
   
 2，部署
   ssh root@121.43.101.148 -p 22
-  
+
   cd /mnt/www/gym/tomcat_forward_service/webapps
   
   cd /home/wwwroot/common/tomcat_forward_service/webapps
+   
+  cd /mnt/www/hw/tomcat_forward_service/webapps
   
   cp ./forward-service/WEB-INF/classes/config.properties .
   rm -rf forward-service.war
@@ -28,8 +30,10 @@ T6dh%$%$ss1
   
   mv -f config.properties ./forward-service/WEB-INF/classes/
   
+  mv -f redis.properties ./forward-service/WEB-INF/classes/
+  
   ../bin/shutdown.sh
   ../bin/startup.sh
   
-  http://121.43.101.148:8901/forward-service/api
+  http://121.43.101.148:3801/forward-service/api
   
