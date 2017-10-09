@@ -23,6 +23,8 @@ cdkj123456Q
    
   cd /mnt/www/hw/tomcat_forward_service/webapps
   
+  cd /mnt/www/dzt/tomcat_forward_service/webapps
+  
   cp ./forward-service/WEB-INF/classes/config.properties .
   rm -rf forward-service.war
   rm -rf forward-service
