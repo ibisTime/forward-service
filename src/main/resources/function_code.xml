@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <filterCodes> 
 <!-- 用户模块拦截功能号start-->
-      <code>805040</code> 
       <code>805001</code> 
       <code>805045</code> 
       <code>805046</code> 
