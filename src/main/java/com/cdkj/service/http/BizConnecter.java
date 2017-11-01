@@ -55,6 +55,7 @@ public class BizConnecter {
             formProperties.put("json", json);
             resJson = PostSimulater.requestPostForm(getPostUrl(code),
                 formProperties);
+            logger.info("request:code<" + code + ">  json<" + json + ">\n");
         } catch (Exception e) {
             throw new BizException("Biz000", "链接请求超时，请联系管理员");
         }

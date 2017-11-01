@@ -25,6 +25,8 @@ cdkj123456Q
   
   cd /mnt/www/dzt/tomcat_forward_service/webapps
   
+  cd /mnt/www/h2h/tomcat_forward_service/webapps
+  
   cp ./forward-service/WEB-INF/classes/config.properties .
   rm -rf forward-service.war
   rm -rf forward-service
@@ -39,3 +41,4 @@ cdkj123456Q
   
   http://121.43.101.148:3801/forward-service/api
   
+  http://121.43.101.148:3901/forward-service/api
