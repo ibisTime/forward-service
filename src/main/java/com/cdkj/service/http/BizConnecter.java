@@ -48,6 +48,11 @@ public class BizConnecter {
 
     public static final String YLQ_URL = PropertiesUtil.Config.YLQ_URL;
 
+    public static <T> T getBizData(String code, String json, Class<T> clazz) {
+        String data = getBizData(code, json);
+        return JsonUtils.json2Bean(data, clazz);
+    }
+
     public static String getBizData(String code, String json) {
         String data = null;
         String resJson = null;

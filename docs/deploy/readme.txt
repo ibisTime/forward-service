@@ -27,15 +27,16 @@ cdkj123456Q
   
   cd /mnt/www/h2h/tomcat_forward_service/webapps
   
+  cd /mnt/www/dzt/tomcat_forward_service/webapps
   cp ./forward-service/WEB-INF/classes/config.properties .
   rm -rf forward-service.war
   rm -rf forward-service
   mv /mnt/forward-service.war .
   
   mv -f config.properties ./forward-service/WEB-INF/classes/
-  
+
   mv -f redis.properties ./forward-service/WEB-INF/classes/
-  
+
   ../bin/shutdown.sh
   ../bin/startup.sh
   
