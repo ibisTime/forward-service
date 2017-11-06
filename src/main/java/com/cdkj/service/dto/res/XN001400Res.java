@@ -52,7 +52,7 @@ public class XN001400Res {
     private String divRate;
 
     // 生日
-    private Date birthday;
+    private String birthday;
 
     // 是否设置支付密码
     private String tradepwdFlag;
@@ -314,11 +314,11 @@ public class XN001400Res {
         this.appOpenId = appOpenId;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

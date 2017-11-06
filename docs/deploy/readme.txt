@@ -25,7 +25,7 @@ cdkj123456Q
   
   cd /mnt/www/dzt/tomcat_forward_service/webapps
   
-  cd /mnt/www/h2h/tomcat_forward_service/webapps
+  cd /mnt/www/wtw/tomcat_forward_service/webapps
   
   cd /mnt/www/dzt/tomcat_forward_service/webapps
   cp ./forward-service/WEB-INF/classes/config.properties .
