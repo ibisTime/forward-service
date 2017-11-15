@@ -11,7 +11,7 @@
 
 部署步骤：
 1、包上传
-scp -P22 ./forward-service.war root@121.43.101.148:/home
+scp -P22 ./forward-service.war root@121.43.101.148:/mnt
 cdkj123456Q
   
 2，部署
@@ -28,6 +28,9 @@ cdkj123456Q
   cd /mnt/www/wtw/tomcat_forward_service/webapps
   
   cd /mnt/www/dzt/tomcat_forward_service/webapps
+  
+  cd /mnt/www/caigo/tomcat_forward_service/webapps
+  
   cp ./forward-service/WEB-INF/classes/config.properties .
   rm -rf forward-service.war
   rm -rf forward-service
