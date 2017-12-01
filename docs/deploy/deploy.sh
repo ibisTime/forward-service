@@ -3,7 +3,7 @@
 
 set tomcat_path "/mnt/www/coin/tomcat_forward_service"
 set war_name "forward-service"
-set host_ip "47.52.77.214"
+set host_ip "47.96.161.183"
 
 spawn ssh root@${host_ip}
 expect "*password:"
