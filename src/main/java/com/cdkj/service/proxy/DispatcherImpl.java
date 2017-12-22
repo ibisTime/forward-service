@@ -79,6 +79,7 @@ public class DispatcherImpl implements IDispatcher {
                     tokenDAO.saveToken(new Token(tokenId));
                 }
             }
+
             Object data = JsonUtils.json2Bean(resultData, Object.class);
             rm.setErrorCode(EErrorCode.SUCCESS.getCode());
             rm.setErrorInfo(EErrorCode.SUCCESS.getValue());

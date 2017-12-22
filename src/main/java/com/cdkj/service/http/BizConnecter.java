@@ -81,7 +81,7 @@ public class BizConnecter {
             postUrl = ACCOUNT_URL;
         } else if (code.startsWith("804")) {
             postUrl = SMS_URL;
-        } else if (code.startsWith("808")) {
+        } else if (code.startsWith("808") || code.startsWith("810")) {
             postUrl = MALL_URL;
         } else if (code.startsWith("801")) {
             postUrl = CORE_URL;
@@ -105,8 +105,6 @@ public class BizConnecter {
             postUrl = GYM_URL;
         } else if (code.startsWith("798")) {
             postUrl = CERTI_URL;
-        } else if (code.startsWith("810")) {
-            postUrl = RENT_URL;
         }
         return postUrl;
     }
