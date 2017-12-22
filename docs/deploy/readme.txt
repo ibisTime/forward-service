@@ -20,13 +20,13 @@ T6dh%$%$ss1
   cd /m/wwwroot/zhpay/tomcat_forward_service/webapps
   
   cd /home/wwwroot/common/tomcat_forward_service/webapps
-  
+   cd /mnt/www/zxzx/tomcat_forward_service/webapps
   cp ./forward-service/WEB-INF/classes/config.properties .
   
   rm -rf forward-service.war
   rm -rf forward-service
-  mv /home/forward-service.war .
-  
+  mv /mnt/forward-service.war .
+  cp /mnt/www/zxzx/package/v1.0.0/3rd/forward-service.war .
   mv -f config.properties ./forward-service/WEB-INF/classes/
   
   ../bin/shutdown.sh
