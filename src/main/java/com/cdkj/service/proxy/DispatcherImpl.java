@@ -8,16 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cdkj.service.common.OrderNoGenerater;
 import com.cdkj.service.common.XmlParse;
 import com.cdkj.service.enums.EErrorCode;
-import com.cdkj.service.enums.ETokenPrefix;
 import com.cdkj.service.exception.BizException;
 import com.cdkj.service.exception.ParaException;
 import com.cdkj.service.exception.TokenException;
 import com.cdkj.service.http.BizConnecter;
 import com.cdkj.service.http.JsonUtils;
 import com.cdkj.service.token.ITokenDAO;
+import com.cdkj.service.token.Jwt;
 import com.cdkj.service.token.Token;
 
 @Component
@@ -36,6 +35,7 @@ public class DispatcherImpl implements IDispatcher {
     @Transactional
     public String doDispatcher(String transcode, String inputParams) {
         String result = null;
+        String userId = null;
         ReturnMessage rm = new ReturnMessage();
         try {
             // 1、解析参数，获取code和token；
@@ -47,18 +47,23 @@ public class DispatcherImpl implements IDispatcher {
                 .getFile());
             Map<String, Object> codesMap = XmlParse.getNodeLists(file);
             // 3、需要token，判断是否正确
-            if (codesMap.containsKey(transcode)) {
-                String tokenId = String.valueOf(map.get("token"));
-                if (StringUtils.isBlank(tokenId) || "null".equals(tokenId)) {
-                    throw new BizException("xn000000", "token不能为空");
-                }
-                Token token = tokenDAO.getToken(tokenId);
-                if (null == token) {
+            // if (codesMap.containsKey(transcode)) {
+            String tokenId = String.valueOf(map.get("token"));
+            if (StringUtils.isNotBlank(tokenId) && !"null".equals(tokenId)) {
+                // 根据tokenId解析出userId
+                userId = Jwt.getUserId(tokenId);
+
+                Token token = tokenDAO.getToken(userId);
+
+                if (null == token || !tokenId.equals(token.getTokenId())) {
                     throw new TokenException("xn000000", "token失效，请重新登录");
                 }
             }
+
+            // }
             // 4、验证通过后转发接口
-            String resultData = BizConnecter.getBizData(transcode, inputParams);
+            String resultData = BizConnecter.getBizData(transcode, inputParams,
+                userId);
             // 5、登录接口，组装token返回
             if ("805041".equals(transcode) || "805043".equals(transcode)
                     || "805050".equals(transcode) || "805151".equals(transcode)
@@ -70,14 +75,18 @@ public class DispatcherImpl implements IDispatcher {
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 if (null != resultMap.get("userId")) {
-                    String userId = String.valueOf(resultMap.get("userId"));
-                    String tokenId = OrderNoGenerater
-                        .generateME(ETokenPrefix.TU.getCode() + userId
-                                + ETokenPrefix.TK.getCode()); // tokenId与userId相关联,保存在本地
+                    userId = String.valueOf(resultMap.get("userId"));
+
+                    // String tokenId = OrderNoGenerater
+                    // .generateME(ETokenPrefix.TU.getCode() + userId
+                    // + ETokenPrefix.TK.getCode()); // tokenId与userId相关联,保存在本地
+
+                    tokenId = Jwt.getJwt(userId, 1000 * 3600 * 24 * 7);
+
                     resultData = resultData.substring(0,
                         resultData.lastIndexOf("}"))
                             + ", \"token\":\"" + tokenId + "\"}";
-                    tokenDAO.saveToken(new Token(tokenId));
+                    tokenDAO.saveToken(new Token(userId, tokenId));
                 }
             }
             Object data = JsonUtils.json2Bean(resultData, Object.class);

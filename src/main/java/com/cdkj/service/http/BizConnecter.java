@@ -2,6 +2,7 @@ package com.cdkj.service.http;
 
 import java.util.Properties;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.cdkj.service.exception.BizException;
@@ -22,13 +23,16 @@ public class BizConnecter {
 
     public static final String CORE_URL = PropertiesUtil.Config.CORE_URL;
 
-    public static String getBizData(String code, String json) {
+    public static String getBizData(String code, String json, String operator) {
         String data = null;
         String resJson = null;
         try {
             Properties formProperties = new Properties();
             formProperties.put("code", code);
             formProperties.put("json", json);
+            if (StringUtils.isNotBlank(operator)) {
+                formProperties.put("operator", operator);
+            }
             resJson = PostSimulater.requestPostForm(getPostUrl(code),
                 formProperties);
         } catch (Exception e) {

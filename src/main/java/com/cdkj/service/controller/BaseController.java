@@ -96,6 +96,6 @@ public class BaseController {
         req.setUserId(userId);
         req.setLatitude("-1");
         req.setLongitude("-1");
-        BizConnecter.getBizData("805158", JsonUtil.Object2Json(req));
+        BizConnecter.getBizData("805158", JsonUtil.Object2Json(req), userId);
     }
 }

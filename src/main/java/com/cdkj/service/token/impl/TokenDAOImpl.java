@@ -29,21 +29,21 @@ public class TokenDAOImpl<T> implements ITokenDAO {
      * @see com.cdkj.service.token.ITokenDAO#getToken(java.lang.String)
      */
     @Override
-    public Token getToken(final String tokenId) {
+    public Token getToken(final String userId) {
         try {
             return redisTemplate.execute(new RedisCallback<Token>() {
                 @Override
                 public Token doInRedis(RedisConnection connection)
                         throws DataAccessException {
                     byte[] key = redisTemplate.getStringSerializer().serialize(
-                        "token.tid." + tokenId);
+                        userId);
                     if (connection.exists(key)) {
-                        // byte[] value = connection.get(key);
-                        // String tokenValue =
-                        // redisTemplate.getStringSerializer()
-                        // .deserialize(value);
+                        byte[] value = connection.get(key);
+                        String tokenValue = redisTemplate.getStringSerializer()
+                            .deserialize(value);
                         Token token = new Token();
-                        token.setTokenId(tokenId);
+                        token.setUserId(userId);
+                        token.setTokenId(tokenValue);
                         return token;
                     }
                     return null;
@@ -65,7 +65,7 @@ public class TokenDAOImpl<T> implements ITokenDAO {
                 public Object doInRedis(RedisConnection connection)
                         throws DataAccessException {
                     byte[] tokenByte = redisTemplate.getStringSerializer()
-                        .serialize("token.tid." + token.getTokenId());
+                        .serialize(token.getUserId());
                     connection.set(tokenByte, redisTemplate
                         .getStringSerializer().serialize(token.getTokenId()));
                     connection.expire(tokenByte, 60 * 60 * 24 * 15); // 失效时间15天
