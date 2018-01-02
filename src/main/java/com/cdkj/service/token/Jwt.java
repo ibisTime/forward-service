@@ -104,7 +104,7 @@ public class Jwt {
             String resultStr = claimsJws.getBody().getSubject();
             return resultStr;
         } catch (Exception e) {
-            throw new TokenException("xn000000", "token解析发送错误，请仔细核对！");
+            throw new TokenException("xn000000", "token解析发生错误，请仔细核对！");
         }
 
     }
