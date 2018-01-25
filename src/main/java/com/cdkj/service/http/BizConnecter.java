@@ -48,6 +48,8 @@ public class BizConnecter {
 
     public static final String YLQ_URL = PropertiesUtil.Config.YLQ_URL;
 
+    public static final String BH_MALL_URL = PropertiesUtil.Config.BH_MALL_URL;
+
     public static <T> T getBizData(String code, String json, Class<T> clazz) {
         String data = getBizData(code, json);
         return JsonUtils.json2Bean(data, clazz);
@@ -117,6 +119,8 @@ public class BizConnecter {
             postUrl = CERTI_URL;
         } else if (code.startsWith("810")) {
             postUrl = RENT_URL;
+        } else if (code.startsWith("627")) {
+            postUrl = BH_MALL_URL;
         }
         return postUrl;
     }
