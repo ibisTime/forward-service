@@ -10,11 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cdkj.service.common.OrderNoGenerater;
 import com.cdkj.service.common.XmlParse;
-import com.cdkj.service.dto.req.XN001400Req;
-import com.cdkj.service.dto.res.XN001400Res;
 import com.cdkj.service.enums.EErrorCode;
 import com.cdkj.service.enums.ETokenPrefix;
-import com.cdkj.service.enums.EUserStatus;
 import com.cdkj.service.exception.BizException;
 import com.cdkj.service.exception.ParaException;
 import com.cdkj.service.exception.TokenException;
@@ -71,7 +68,7 @@ public class DispatcherImpl implements IDispatcher {
                     || "618920".equals(transcode) || "618922".equals(transcode)
                     || "805154".equals(transcode) || "612050".equals(transcode)
                     || "623800".equals(transcode) || "805050".equals(transcode)
-                    || "805170".equals(transcode)) {
+                    || "805170".equals(transcode) || "627200".equals(transcode)) {
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 if (null != resultMap.get("userId")) {
@@ -84,19 +81,19 @@ public class DispatcherImpl implements IDispatcher {
                     tokenDAO.saveToken(new Token(tokenId));
                 }
             }
-            if (StringUtils.isBlank(tokenId) || "null".equals(tokenId)) {
-            } else {
-                String userId = tokenId.substring(1,
-                    tokenId.indexOf(ETokenPrefix.TK.getCode()));
-                XN001400Req req = new XN001400Req();
-                req.setTokenId(tokenId);
-                req.setUserId(userId);
-                XN001400Res res = BizConnecter.getBizData("001400",
-                    JsonUtils.object2Json(req), XN001400Res.class);
-                if (!EUserStatus.NORMAL.getCode().equals(res.getStatus())) {
-                    throw new TokenException("xn000000", "账号异常");
-                }
-            }
+            // if (StringUtils.isBlank(tokenId) || "null".equals(tokenId)) {
+            // } else {
+            // String userId = tokenId.substring(1,
+            // tokenId.indexOf(ETokenPrefix.TK.getCode()));
+            // XN001400Req req = new XN001400Req();
+            // req.setTokenId(tokenId);
+            // req.setUserId(userId);
+            // XN001400Res res = BizConnecter.getBizData("001400",
+            // JsonUtils.object2Json(req), XN001400Res.class);
+            // if (!EUserStatus.NORMAL.getCode().equals(res.getStatus())) {
+            // throw new TokenException("xn000000", "账号异常");
+            // }
+            // }
             Object data = JsonUtils.json2Bean(resultData, Object.class);
             rm.setErrorCode(EErrorCode.SUCCESS.getCode());
             rm.setErrorInfo(EErrorCode.SUCCESS.getValue());
