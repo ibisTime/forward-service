@@ -1,7 +1,7 @@
 
 #!/usr/bin/expect
 
-set tomcat_path "/mnt/www/bhxt/tomcat_forward_service"
+set tomcat_path "/mnt/www/myxb/tomcat_forward_service"
 set war_name "forward-service"
 #set host_ip "47.96.161.183"
 #set host_pwd "cdkjqwertyQ01"

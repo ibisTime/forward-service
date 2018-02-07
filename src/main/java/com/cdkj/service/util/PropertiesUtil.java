@@ -61,5 +61,7 @@ public class PropertiesUtil {
         public static String YLQ_URL = props.getProperty("YLQ_URL");
 
         public static String BH_MALL_URL = props.getProperty("BH_MALL_URL");
+
+        public static String MYXB_URL = props.getProperty("MYXB_URL");
     }
 }
