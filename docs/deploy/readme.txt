@@ -31,10 +31,13 @@ cdkj123456Q
   
   cd /mnt/www/caigo/tomcat_forward_service/webapps
   
+   cd /mnt/www/myxb/tomcat_forward_service/webapps
+   
   cp ./forward-service/WEB-INF/classes/config.properties .
   rm -rf forward-service.war
   rm -rf forward-service
   mv /mnt/forward-service.war .
+  cp /mnt/www/myxb/package/v1.0.0/4th/forward-service.war .
   
   mv -f config.properties ./forward-service/WEB-INF/classes/
 
