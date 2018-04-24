@@ -71,7 +71,8 @@ public class DispatcherImpl implements IDispatcher {
                     || "805182".equals(transcode) || "805183".equals(transcode)
                     || "618920".equals(transcode) || "618922".equals(transcode)
                     || "805154".equals(transcode) || "612050".equals(transcode)
-                    || "623800".equals(transcode) || "625800".equals(transcode)) {// 618920
+                    || "623800".equals(transcode) || "625800".equals(transcode)
+                    || "805173".equals(transcode)) {// 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 if (null != resultMap.get("userId")) {
