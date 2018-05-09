@@ -18,6 +18,8 @@ public class BizConnecter {
 
     public static final String ACCOUNT_URL = PropertiesUtil.Config.ACCOUNT_URL;
 
+    public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
+
     public static <T> T getBizData(String code, String json, Class<T> clazz) {
         String data = getBizData(code, json);
         return JsonUtils.json2Bean(data, clazz);
@@ -57,6 +59,8 @@ public class BizConnecter {
             postUrl = MYXB_URL;
         } else if (code.startsWith("802")) {
             postUrl = ACCOUNT_URL;
+        } else if (code.startsWith("804")) {
+            postUrl = SMS_URL;
         }
         return postUrl;
     }
