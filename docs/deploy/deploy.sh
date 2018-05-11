@@ -1,10 +1,10 @@
 
 #!/usr/bin/expect
 
-set tomcat_path "/mnt/www/token/tomcat_forward_service"
+set tomcat_path "/mnt/www/htwt/tomcat_forward_service"
 set war_name "forward-service"
-set host_ip "120.26.6.213"
-set host_pwd "cdkj123456Q"
+set host_ip "39.104.89.43"
+set host_pwd "htwT2018"
 
 ######## 1.传输文件至服务器根目录 ########
 spawn scp ./${war_name}.war root@${host_ip}:~/
