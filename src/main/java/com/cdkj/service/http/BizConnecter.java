@@ -52,8 +52,7 @@ public class BizConnecter {
         String postUrl = null;
         if (code.startsWith("804")) {
             postUrl = SMS_URL;
-        } else if (code.startsWith("630") || code.startsWith("805")
-                || code.startsWith("802")) {
+        } else {
             postUrl = HTWT_URL;
         }
         return postUrl;
