@@ -43,8 +43,8 @@ public class DispatcherImpl implements IDispatcher {
                 Map.class);
             // 2、对功能号进行判断是否需要token
             ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource("/function_code.xml")
-                .getFile());
+            File file = new File(
+                classLoader.getResource("/function_code.xml").getFile());
             Map<String, Object> codesMap = XmlParse.getNodeLists(file);
             // 3、需要token，判断是否正确
             // if (codesMap.containsKey(transcode)) {
@@ -66,12 +66,13 @@ public class DispatcherImpl implements IDispatcher {
                 userId);
             // 5、登录接口，组装token返回
             if ("805041".equals(transcode) || "805043".equals(transcode)
-                    || "805050".equals(transcode) || "805151".equals(transcode)
-                    || "805152".equals(transcode) || "805170".equals(transcode)
-                    || "805182".equals(transcode) || "805183".equals(transcode)
-                    || "618920".equals(transcode) || "618922".equals(transcode)
-                    || "805154".equals(transcode) || "612050".equals(transcode)
-                    || "623800".equals(transcode) || "625800".equals(transcode)) {// 618920
+                    || "805044".equals(transcode) || "805050".equals(transcode)
+                    || "805151".equals(transcode) || "805152".equals(transcode)
+                    || "805170".equals(transcode) || "805182".equals(transcode)
+                    || "805183".equals(transcode) || "618920".equals(transcode)
+                    || "618922".equals(transcode) || "805154".equals(transcode)
+                    || "612050".equals(transcode) || "623800".equals(transcode)
+                    || "625800".equals(transcode)) {// 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 if (null != resultMap.get("userId")) {
@@ -84,8 +85,8 @@ public class DispatcherImpl implements IDispatcher {
                     tokenId = Jwt.getJwt(userId, 1000 * 3600 * 24 * 7);
 
                     resultData = resultData.substring(0,
-                        resultData.lastIndexOf("}"))
-                            + ", \"token\":\"" + tokenId + "\"}";
+                        resultData.lastIndexOf("}")) + ", \"token\":\""
+                            + tokenId + "\"}";
                     tokenDAO.saveToken(new Token(userId, tokenId));
                 }
             }
