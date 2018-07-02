@@ -56,8 +56,8 @@ public class BizConnecter {
         String postUrl = null;
         if (code.startsWith("804")) {
             postUrl = SMS_URL;
-        } else if (code.startsWith("625") || code.startsWith("805")
-                || code.startsWith("802")) {
+        } else if (code.startsWith("623") || code.startsWith("625")
+                || code.startsWith("805") || code.startsWith("802")) {
             postUrl = COIN_URL;
         } else if (code.startsWith("660") || code.startsWith("801")) {
             postUrl = CORE_URL;
