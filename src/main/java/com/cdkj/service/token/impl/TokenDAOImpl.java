@@ -35,8 +35,8 @@ public class TokenDAOImpl<T> implements ITokenDAO {
                 @Override
                 public Token doInRedis(RedisConnection connection)
                         throws DataAccessException {
-                    byte[] key = redisTemplate.getStringSerializer().serialize(
-                        userId);
+                    byte[] key = redisTemplate.getStringSerializer()
+                        .serialize(userId);
                     if (connection.exists(key)) {
                         byte[] value = connection.get(key);
                         String tokenValue = redisTemplate.getStringSerializer()
@@ -64,10 +64,11 @@ public class TokenDAOImpl<T> implements ITokenDAO {
                 @Override
                 public Object doInRedis(RedisConnection connection)
                         throws DataAccessException {
-                    byte[] tokenByte = redisTemplate.getStringSerializer()
+                    byte[] userByte = redisTemplate.getStringSerializer()
                         .serialize(token.getUserId());
-                    connection.set(tokenByte, redisTemplate
-                        .getStringSerializer().serialize(token.getTokenId()));
+                    byte[] tokenByte = redisTemplate.getStringSerializer()
+                        .serialize(token.getTokenId());
+                    connection.set(userByte, tokenByte);
                     connection.expire(tokenByte, 60 * 60 * 24 * 15); // 失效时间15天
                     return null;
                 }
@@ -88,8 +89,8 @@ public class TokenDAOImpl<T> implements ITokenDAO {
                 public Long doInRedis(RedisConnection connection)
                         throws DataAccessException {
                     long result = 0;
-                    byte[] key = redisTemplate.getStringSerializer().serialize(
-                        "token.tid." + tokenId);
+                    byte[] key = redisTemplate.getStringSerializer()
+                        .serialize("token.tid." + tokenId);
                     if (connection.exists(key)) {
                         result = connection.del(key);
                         return result;

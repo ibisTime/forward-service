@@ -1,6 +1,5 @@
 package com.cdkj.service.proxy;
 
-import java.io.File;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -8,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cdkj.service.common.XmlParse;
+import com.cdkj.service.enums.EClient;
 import com.cdkj.service.enums.EErrorCode;
 import com.cdkj.service.exception.BizException;
 import com.cdkj.service.exception.ParaException;
@@ -38,33 +37,34 @@ public class DispatcherImpl implements IDispatcher {
         String userId = null;
         ReturnMessage rm = new ReturnMessage();
         try {
-            // 1、解析参数，获取code和token；
+
+            // 解析入参
             Map<String, Object> map = JsonUtils.json2Bean(inputParams,
                 Map.class);
-            // 2、对功能号进行判断是否需要token
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(
-                classLoader.getResource("/function_code.xml").getFile());
-            Map<String, Object> codesMap = XmlParse.getNodeLists(file);
-            // 3、需要token，判断是否正确
-            // if (codesMap.containsKey(transcode)) {
+
+            // 获取入参中token
             String tokenId = String.valueOf(map.get("token"));
+
+            // token为空
             if (StringUtils.isNotBlank(tokenId) && !"null".equals(tokenId)) {
+
                 // 根据tokenId解析出userId
                 userId = Jwt.getUserId(tokenId);
 
+                // 查询redis中该用户最新的token
                 Token token = tokenDAO.getToken(userId);
 
                 if (null == token || !tokenId.equals(token.getTokenId())) {
                     throw new TokenException("xn000000", "token失效，请重新登录");
                 }
+
             }
 
-            // }
-            // 4、验证通过后转发接口
+            // 验证通过后转发接口
             String resultData = BizConnecter.getBizData(transcode, inputParams,
                 userId);
-            // 5、登录接口，组装token返回
+
+            // 登录接口，组装token返回
             if ("805041".equals(transcode) || "805043".equals(transcode)
                     || "805044".equals(transcode) || "805050".equals(transcode)
                     || "805151".equals(transcode) || "805152".equals(transcode)
@@ -75,18 +75,39 @@ public class DispatcherImpl implements IDispatcher {
                     || "625800".equals(transcode)) {// 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
+
+                String client = null;
+                if (null != resultMap.get("client")) {
+                    client = String.valueOf(resultMap.get("client"));
+                }
+
                 if (null != resultMap.get("userId")) {
+
                     userId = String.valueOf(resultMap.get("userId"));
 
-                    // String tokenId = OrderNoGenerater
-                    // .generateME(ETokenPrefix.TU.getCode() + userId
-                    // + ETokenPrefix.TK.getCode()); // tokenId与userId相关联,保存在本地
+                    if (EClient.WEB_H5.getCode().equals(client)) {
 
-                    tokenId = Jwt.getJwt(userId, 1000 * 3600 * 24 * 7);
+                        // 查询redis中该用户最新的token
+                        Token token = tokenDAO.getToken(userId);
+                        if (null == token
+                                || !tokenId.equals(token.getTokenId())) {
+                            // 生成新的token
+                            tokenId = Jwt.getJwt(userId, 1000 * 3600 * 24 * 7);
+                        } else {
+                            tokenId = token.getTokenId();
+                        }
 
+                    } else {
+                        // 生成新的token
+                        tokenId = Jwt.getJwt(userId, 1000 * 3600 * 24 * 7);
+                    }
+
+                    // 返回token添加给前端
                     resultData = resultData.substring(0,
                         resultData.lastIndexOf("}")) + ", \"token\":\""
                             + tokenId + "\"}";
+
+                    // 保存token至redis
                     tokenDAO.saveToken(new Token(userId, tokenId));
                 }
             }

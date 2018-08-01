@@ -1,11 +1,5 @@
 package com.cdkj.service.token;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-
 import java.security.Key;
 import java.util.Date;
 
@@ -16,6 +10,13 @@ import org.apache.commons.codec.binary.Base64;
 
 import com.cdkj.service.exception.TokenException;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
 /**
  * Created by tianlei on 2017/十二月/28.
  */
@@ -23,15 +24,14 @@ public class Jwt {
 
     public static void main(String[] args) {
 
-        String jwt = getJwt("U1234566789", 1000 * 3600 * 24);
+        String jwt = getJwt("U1234566789", 1000 * 5);
 
         try {
-
+            Thread.sleep(2000);
             String userId = getUserId(jwt);
             System.out.println(userId);
 
         } catch (Exception e) {
-
             e.printStackTrace();
         }
 
@@ -77,8 +77,8 @@ public class Jwt {
         // 失效时间，设为一天
         // long timeinterval = 24 * 3600 *1000;
         long timeinterval = timeInterval; //
-        jwtBuilder.setExpiration(new Date(System.currentTimeMillis()
-                + timeinterval));
+        jwtBuilder
+            .setExpiration(new Date(System.currentTimeMillis() + timeinterval));
         // jti: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击。
         jwtBuilder.setId("");
         // 2. Public claims: 共有的
@@ -103,6 +103,8 @@ public class Jwt {
             // 获取结果
             String resultStr = claimsJws.getBody().getSubject();
             return resultStr;
+        } catch (ExpiredJwtException expiredJwtException) {
+            throw new TokenException("xn000000", "token失效，请重新登录！");
         } catch (Exception e) {
             throw new TokenException("xn000000", "token解析发生错误，请仔细核对！");
         }
