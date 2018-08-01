@@ -1,10 +1,10 @@
 
 #!/usr/bin/expect
 
-set tomcat_path "/mnt/www/theia/tomcat_forward_service"
+set tomcat_path "/mnt/www/token/tomcat_forward_service"
 set war_name "forward-service"
-set host_ip "47.75.165.70"
-set host_pwd "THA2018Online"
+set host_ip "120.26.6.213"
+set host_pwd "cdkj123456Q"
 
 ######## 1.传输文件至服务器根目录 ########
 spawn scp ./${war_name}.war root@${host_ip}:~/

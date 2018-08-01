@@ -77,8 +77,8 @@ public class DispatcherImpl implements IDispatcher {
                     Map.class);
 
                 String client = null;
-                if (null != resultMap.get("client")) {
-                    client = String.valueOf(resultMap.get("client"));
+                if (null != map.get("client")) {
+                    client = String.valueOf(map.get("client"));
                 }
 
                 if (null != resultMap.get("userId")) {
@@ -89,10 +89,11 @@ public class DispatcherImpl implements IDispatcher {
 
                         // 查询redis中该用户最新的token
                         Token token = tokenDAO.getToken(userId);
-                        if (null == token
-                                || !tokenId.equals(token.getTokenId())) {
+                        if (null == token) {
                             // 生成新的token
                             tokenId = Jwt.getJwt(userId, 1000 * 3600 * 24 * 7);
+                            // 保存token至redis
+                            tokenDAO.saveToken(new Token(userId, tokenId));
                         } else {
                             tokenId = token.getTokenId();
                         }
@@ -100,6 +101,8 @@ public class DispatcherImpl implements IDispatcher {
                     } else {
                         // 生成新的token
                         tokenId = Jwt.getJwt(userId, 1000 * 3600 * 24 * 7);
+                        // 保存token至redis
+                        tokenDAO.saveToken(new Token(userId, tokenId));
                     }
 
                     // 返回token添加给前端
@@ -107,8 +110,6 @@ public class DispatcherImpl implements IDispatcher {
                         resultData.lastIndexOf("}")) + ", \"token\":\""
                             + tokenId + "\"}";
 
-                    // 保存token至redis
-                    tokenDAO.saveToken(new Token(userId, tokenId));
                 }
             }
             Object data = JsonUtils.json2Bean(resultData, Object.class);
