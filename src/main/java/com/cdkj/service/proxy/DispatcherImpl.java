@@ -96,6 +96,16 @@ public class DispatcherImpl implements IDispatcher {
                             tokenDAO.saveToken(new Token(userId, tokenId));
                         } else {
                             tokenId = token.getTokenId();
+                            // 检查token是否已经过期
+                            try {
+                                Jwt.getUserId(tokenId);
+                            } catch (Exception e) {
+                                // 生成新的token
+                                tokenId = Jwt.getJwt(userId,
+                                    1000 * 3600 * 24 * 7);
+                                // 保存token至redis
+                                tokenDAO.saveToken(new Token(userId, tokenId));
+                            }
                         }
 
                     } else {
