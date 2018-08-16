@@ -3,7 +3,7 @@
 
 set tomcat_path "/mnt/www/theia/tomcat_forward_service"
 set war_name "forward-service"
-set host_ip "47.96.161.183"
+set host_ip "47.254.69.142"
 set host_pwd "cdkjqwertyQ01"
 
 ######## 1.传输文件至服务器根目录 ########
