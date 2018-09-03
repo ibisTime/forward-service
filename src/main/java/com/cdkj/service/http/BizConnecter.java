@@ -64,6 +64,7 @@ public class BizConnecter {
         } else if (code.startsWith("798")) {
             postUrl = CERTI_URL;
         }
+        logger.info("请求链接url=" + postUrl);
         return postUrl;
     }
 }
