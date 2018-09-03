@@ -28,7 +28,7 @@ public class PropertiesUtil {
 
         public static String CERTI_URL = props.getProperty("CERTI_URL");
 
-        public static String COIN_URL = props.getProperty("COIN_URL");
+        public static String HMONEY_URL = props.getProperty("HMONEY_URL");
 
         public static String CORE_URL = props.getProperty("CORE_URL");
 

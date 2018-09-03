@@ -19,7 +19,7 @@ public class BizConnecter {
 
     public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
 
-    public static final String COIN_URL = PropertiesUtil.Config.COIN_URL;
+    public static final String HMONEY_URL = PropertiesUtil.Config.HMONEY_URL;
 
     public static final String CORE_URL = PropertiesUtil.Config.CORE_URL;
 
@@ -58,7 +58,7 @@ public class BizConnecter {
             postUrl = SMS_URL;
         } else if (code.startsWith("623") || code.startsWith("625")
                 || code.startsWith("805") || code.startsWith("802")) {
-            postUrl = COIN_URL;
+            postUrl = HMONEY_URL;
         } else if (code.startsWith("660") || code.startsWith("801")) {
             postUrl = CORE_URL;
         } else if (code.startsWith("798")) {
