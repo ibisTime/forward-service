@@ -57,6 +57,7 @@ public class BizConnecter {
         if (code.startsWith("804")) {
             postUrl = SMS_URL;
         } else if (code.startsWith("623") || code.startsWith("625")
+                || code.startsWith("628") || code.startsWith("630")
                 || code.startsWith("805") || code.startsWith("802")) {
             postUrl = HMONEY_URL;
         } else if (code.startsWith("660") || code.startsWith("801")) {
