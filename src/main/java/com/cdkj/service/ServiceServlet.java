@@ -47,12 +47,27 @@ public class ServiceServlet extends HttpServlet {
         String json = request.getParameter("json");
         String ip = getIpAddr(request);
         // 返回token添加给前端
-        json = json.substring(0, json.lastIndexOf("}")) + ", \"ip\":\"" + ip
-                + "\"}";
+        String subString = json.substring(0, json.lastIndexOf("}"));
+        if ("{".equals(subString)) {
+            json = subString + "\"ip\":\"" + ip + "\"}";
+        } else {
+            json = subString + ", \"ip\":\"" + ip + "\"}";
+        }
         String result = dispatcher.doDispatcher(code, json);
         PrintWriter writer = response.getWriter();
         writer.append(result);
         writer.flush();
+    }
+
+    public static void main(String[] args) {
+        String json = "{}";
+        String subString = json.substring(0, json.lastIndexOf("}"));
+        if ("{".equals(subString)) {
+            json = subString + "\"ip\":\"" + "4453" + "\"}";
+        } else {
+            json = subString + ", \"ip\":\"" + "4453" + "\"}";
+        }
+        System.out.println(json);
     }
 
     /**
