@@ -23,7 +23,12 @@ public class BizConnecter {
 
     public static final String CORE_URL = PropertiesUtil.Config.CORE_URL;
 
-    public static String getBizData(String code, String json, String operator) {
+    public static final String CONTENT_TYPE = "Content-Type";
+
+    public static final String ACCEPT_LANGUAGE = "Accept-Language";
+
+    public static String getBizData(String code, String json, String operator,
+            String language) {
         String data = null;
         String resJson = null;
         try {
@@ -33,8 +38,12 @@ public class BizConnecter {
             if (StringUtils.isNotBlank(operator)) {
                 formProperties.put("operator", operator);
             }
+
+            Properties requestProperties = new Properties();
+            requestProperties.setProperty(ACCEPT_LANGUAGE, language);
+
             resJson = PostSimulater.requestPostForm(getPostUrl(code),
-                formProperties);
+                formProperties, requestProperties);
         } catch (Exception e) {
             throw new BizException("Biz000", "链接请求超时，请联系管理员");
         }
@@ -46,6 +55,7 @@ public class BizConnecter {
                 + errorInfo + ">");
         if (YES.equalsIgnoreCase(errorCode)) {
             data = RegexUtils.find(resJson, "data\":(.*)\\}", 1);
+
         } else {
             throw new BizException(errorCode, errorInfo);
         }

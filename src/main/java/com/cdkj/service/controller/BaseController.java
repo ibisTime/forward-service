@@ -74,7 +74,9 @@ public class BaseController {
         String userId = tokenId.substring(
             tokenId.indexOf(ETokenPrefix.TU.getCode()) + 1,
             tokenId.indexOf(ETokenPrefix.TK.getCode()));
-        doRemoveLocation(userId);
+
+        String language = request.getHeader("Accept-Language");
+        doRemoveLocation(userId, language);
         // 将用户的经纬度设置成空
         ReturnMessage rm = new ReturnMessage();
         rm.setErrorCode(EErrorCode.SUCCESS.getCode());
@@ -91,11 +93,12 @@ public class BaseController {
         System.out.println("********************登出结束**********************");
     }
 
-    private void doRemoveLocation(String userId) {
+    private void doRemoveLocation(String userId, String language) {
         XN805158Req req = new XN805158Req();
         req.setUserId(userId);
         req.setLatitude("-1");
         req.setLongitude("-1");
-        BizConnecter.getBizData("805158", JsonUtil.Object2Json(req), userId);
+        BizConnecter.getBizData("805158", JsonUtil.Object2Json(req), userId,
+            language);
     }
 }

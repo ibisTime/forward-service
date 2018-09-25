@@ -32,7 +32,8 @@ public class DispatcherImpl implements IDispatcher {
     @Override
     @SuppressWarnings("unchecked")
     @Transactional
-    public String doDispatcher(String transcode, String inputParams) {
+    public String doDispatcher(String transcode, String inputParams,
+            String language) {
         String result = null;
         String userId = null;
         ReturnMessage rm = new ReturnMessage();
@@ -62,7 +63,7 @@ public class DispatcherImpl implements IDispatcher {
 
             // 验证通过后转发接口
             String resultData = BizConnecter.getBizData(transcode, inputParams,
-                userId);
+                userId, language);
 
             // 登录接口，组装token返回
             if ("805041".equals(transcode) || "805043".equals(transcode)
@@ -72,8 +73,7 @@ public class DispatcherImpl implements IDispatcher {
                     || "805183".equals(transcode) || "618920".equals(transcode)
                     || "618922".equals(transcode) || "805154".equals(transcode)
                     || "612050".equals(transcode) || "623800".equals(transcode)
-                    || "625800".equals(transcode)
-                    || "630051".equals(transcode)) {// 618920
+                    || "625800".equals(transcode) || "630051".equals(transcode)) {// 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
 
@@ -118,8 +118,8 @@ public class DispatcherImpl implements IDispatcher {
 
                     // 返回token添加给前端
                     resultData = resultData.substring(0,
-                        resultData.lastIndexOf("}")) + ", \"token\":\""
-                            + tokenId + "\"}";
+                        resultData.lastIndexOf("}"))
+                            + ", \"token\":\"" + tokenId + "\"}";
 
                 }
             }
@@ -136,6 +136,7 @@ public class DispatcherImpl implements IDispatcher {
                 rm.setErrorBizCode(((TokenException) e).getErrorCode());
                 rm.setErrorInfo(((TokenException) e).getErrorMessage());
                 rm.setData("");
+
             } else if (e instanceof BizException) {
                 rm.setErrorCode(EErrorCode.BIZ_ERR.getCode());
                 rm.setErrorBizCode(((BizException) e).getErrorCode());
