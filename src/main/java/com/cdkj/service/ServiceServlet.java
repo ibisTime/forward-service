@@ -25,21 +25,15 @@ public class ServiceServlet extends HttpServlet {
      */
     private static final long serialVersionUID = 6175432226630152841L;
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         logger.info("Successful Deployment");
         PrintWriter writer = response.getWriter();
         writer.append("Version:1.0.0 \n");
-        writer.append("Description:forward-service HMONEY 1st \n");
+        writer.append("Description:forward-service HMONEY 1st——1 \n");
         writer.flush();
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         String code = request.getParameter("code");
