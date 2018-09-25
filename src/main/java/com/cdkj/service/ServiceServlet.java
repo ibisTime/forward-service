@@ -38,7 +38,9 @@ public class ServiceServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         String code = request.getParameter("code");
         String json = request.getParameter("json");
-        String result = dispatcher.doDispatcher(code, json);
+        String language = request.getHeader("Accept-Language") == null ? "en_US"
+                : request.getHeader("Accept-Language");
+        String result = dispatcher.doDispatcher(code, json, language);
         PrintWriter writer = response.getWriter();
         writer.append(result);
         writer.flush();
