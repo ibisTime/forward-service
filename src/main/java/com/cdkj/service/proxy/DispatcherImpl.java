@@ -43,8 +43,8 @@ public class DispatcherImpl implements IDispatcher {
                 Map.class);
             // 2、对功能号进行判断是否需要token
             ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource("/function_code.xml")
-                .getFile());
+            File file = new File(
+                classLoader.getResource("/function_code.xml").getFile());
             Map<String, Object> codesMap = XmlParse.getNodeLists(file);
             // 3、需要token，判断是否正确
             String tokenId = String.valueOf(map.get("token"));
@@ -61,39 +61,21 @@ public class DispatcherImpl implements IDispatcher {
             // 4、验证通过后转发接口
             String resultData = BizConnecter.getBizData(transcode, inputParams);
             // 5、登录接口，组装token返回
-            if ("805041".equals(transcode) || "805043".equals(transcode)
-                    || "805050".equals(transcode) || "805151".equals(transcode)
-                    || "805152".equals(transcode) || "805170".equals(transcode)
-                    || "805182".equals(transcode) || "805183".equals(transcode)
-                    || "618920".equals(transcode) || "618922".equals(transcode)
-                    || "805154".equals(transcode) || "612050".equals(transcode)
-                    || "623800".equals(transcode) || "805050".equals(transcode)
-                    || "805170".equals(transcode) || "627300".equals(transcode)) {
+            if ("805050".equals(transcode) || "630051".equals(transcode)
+                    || "730071".equals(transcode)) {
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
                 if (null != resultMap.get("userId")) {
                     String userId = String.valueOf(resultMap.get("userId"));
-                    tokenId = OrderNoGenerater.generateME(ETokenPrefix.TU
-                        .getCode() + userId + ETokenPrefix.TK.getCode()); // tokenId与userId相关联,保存在本地
+                    tokenId = OrderNoGenerater
+                        .generateME(ETokenPrefix.TU.getCode() + userId
+                                + ETokenPrefix.TK.getCode()); // tokenId与userId相关联,保存在本地
                     resultData = resultData.substring(0,
-                        resultData.lastIndexOf("}"))
-                            + ", \"token\":\"" + tokenId + "\"}";
+                        resultData.lastIndexOf("}")) + ", \"token\":\""
+                            + tokenId + "\"}";
                     tokenDAO.saveToken(new Token(tokenId));
                 }
             }
-            // if (StringUtils.isBlank(tokenId) || "null".equals(tokenId)) {
-            // } else {
-            // String userId = tokenId.substring(1,
-            // tokenId.indexOf(ETokenPrefix.TK.getCode()));
-            // XN001400Req req = new XN001400Req();
-            // req.setTokenId(tokenId);
-            // req.setUserId(userId);
-            // XN001400Res res = BizConnecter.getBizData("001400",
-            // JsonUtils.object2Json(req), XN001400Res.class);
-            // if (!EUserStatus.NORMAL.getCode().equals(res.getStatus())) {
-            // throw new TokenException("xn000000", "账号异常");
-            // }
-            // }
             Object data = JsonUtils.json2Bean(resultData, Object.class);
             rm.setErrorCode(EErrorCode.SUCCESS.getCode());
             rm.setErrorInfo(EErrorCode.SUCCESS.getValue());
