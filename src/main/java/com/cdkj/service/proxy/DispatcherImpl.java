@@ -73,7 +73,8 @@ public class DispatcherImpl implements IDispatcher {
                     || "805183".equals(transcode) || "618920".equals(transcode)
                     || "618922".equals(transcode) || "805154".equals(transcode)
                     || "612050".equals(transcode) || "623800".equals(transcode)
-                    || "625800".equals(transcode) || "630051".equals(transcode)) {// 618920
+                    || "625800".equals(transcode)
+                    || "630051".equals(transcode)) {// 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
 
@@ -118,8 +119,8 @@ public class DispatcherImpl implements IDispatcher {
 
                     // 返回token添加给前端
                     resultData = resultData.substring(0,
-                        resultData.lastIndexOf("}"))
-                            + ", \"token\":\"" + tokenId + "\"}";
+                        resultData.lastIndexOf("}")) + ", \"token\":\""
+                            + tokenId + "\"}";
 
                 }
             }
@@ -131,6 +132,8 @@ public class DispatcherImpl implements IDispatcher {
             }
             rm.setData(data);
         } catch (Exception e) {
+            System.out.println("Exception Post-f:" + e.getMessage());
+
             if (e instanceof TokenException) {
                 rm.setErrorCode(EErrorCode.TOKEN_ERR.getCode());
                 rm.setErrorBizCode(((TokenException) e).getErrorCode());
