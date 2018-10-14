@@ -15,13 +15,7 @@ public class BizConnecter {
 
     public static final String YES = "0";
 
-    public static final String CERTI_URL = PropertiesUtil.Config.CERTI_URL;
-
-    public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
-
     public static final String HMONEY_URL = PropertiesUtil.Config.HMONEY_URL;
-
-    public static final String CORE_URL = PropertiesUtil.Config.CORE_URL;
 
     public static final String CONTENT_TYPE = "Content-Type";
 
@@ -63,20 +57,6 @@ public class BizConnecter {
     }
 
     public static String getPostUrl(String code) {
-        String postUrl = null;
-        if (code.startsWith("804")) {
-            postUrl = SMS_URL;
-        } else if (code.startsWith("623") || code.startsWith("625")
-                || code.startsWith("650") || code.startsWith("628")
-                || code.startsWith("630") || code.startsWith("805")
-                || code.startsWith("802")) {
-            postUrl = HMONEY_URL;
-        } else if (code.startsWith("660") || code.startsWith("801")) {
-            postUrl = CORE_URL;
-        } else if (code.startsWith("798")) {
-            postUrl = CERTI_URL;
-        }
-        logger.info("请求链接url=" + postUrl);
-        return postUrl;
+        return PropertiesUtil.Config.HMONEY_URL;
     }
 }
