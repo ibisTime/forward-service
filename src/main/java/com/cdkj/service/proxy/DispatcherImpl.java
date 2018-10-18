@@ -84,7 +84,7 @@ public class DispatcherImpl implements IDispatcher {
 
                     userId = String.valueOf(resultMap.get("userId"));
 
-                    if (EClient.WEB_H5.getCode().equals(client)) {
+                    if (EClient.WEB_H5.getCode().equalsIgnoreCase(client)) {
 
                         // 查询redis中该用户最新的token
                         Token token = tokenDAO.getToken(userId);
