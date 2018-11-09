@@ -14,7 +14,7 @@ public class BizConnecter {
 
     public static final String YES = "0";
 
-    public static final String XN_SDHH_URL = PropertiesUtil.Config.BH_MALL_URL;
+    public static final String XN_SDHH_URL = PropertiesUtil.Config.XN_SDHH_URL;
 
     public static <T> T getBizData(String code, String json, Class<T> clazz) {
         String data = getBizData(code, json);
