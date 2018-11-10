@@ -14,7 +14,7 @@ public class BizConnecter {
 
     public static final String YES = "0";
 
-    public static final String XN_SDHH_URL = PropertiesUtil.Config.BH_MALL_URL;
+    public static final String XN_SDHH_URL = PropertiesUtil.Config.XN_SDHH_URL;
 
     public static <T> T getBizData(String code, String json, Class<T> clazz) {
         String data = getBizData(code, json);
@@ -28,8 +28,8 @@ public class BizConnecter {
             Properties formProperties = new Properties();
             formProperties.put("code", code);
             formProperties.put("json", json);
-            resJson = PostSimulater.requestPostForm(XN_SDHH_URL,
-                formProperties);
+            resJson = PostSimulater
+                .requestPostForm(XN_SDHH_URL, formProperties);
             logger.info("request:code<" + code + ">  json<" + json + ">\n");
         } catch (Exception e) {
             throw new BizException("Biz000", "链接请求超时，请联系管理员");
