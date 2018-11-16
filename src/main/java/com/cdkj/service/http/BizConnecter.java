@@ -19,6 +19,8 @@ public class BizConnecter {
 
     public static final String HTWT_URL = PropertiesUtil.Config.HTWT_URL;
 
+    public static final String CHE_URL = PropertiesUtil.Config.CHE_URL;
+
     public static String getBizData(String code, String json, String operator) {
         String data = null;
         String resJson = null;
@@ -50,8 +52,12 @@ public class BizConnecter {
 
     public static String getPostUrl(String code) {
         String postUrl = null;
-        if (code.startsWith("804")) {
+        if (code.equals("630450")) {
+            postUrl = HTWT_URL;
+        } else if (code.startsWith("804")) {
             postUrl = SMS_URL;
+        } else if (code.startsWith("6304")) {
+            postUrl = CHE_URL;
         } else {
             postUrl = HTWT_URL;
         }

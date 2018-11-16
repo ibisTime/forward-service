@@ -28,5 +28,6 @@ public class PropertiesUtil {
 
         public static String HTWT_URL = props.getProperty("HTWT_URL");
 
+        public static String CHE_URL = props.getProperty("CHE_URL");
     }
 }
