@@ -3,6 +3,7 @@ package com.cdkj.service.proxy;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,8 @@ import com.cdkj.service.token.Token;
 @Component
 public class DispatcherImpl implements IDispatcher {
 
+    private static Logger logger = Logger.getLogger(DispatcherImpl.class);
+
     @Autowired
     protected ITokenDAO tokenDAO;
 
@@ -32,10 +35,11 @@ public class DispatcherImpl implements IDispatcher {
     @Override
     @SuppressWarnings("unchecked")
     @Transactional
-    public String doDispatcher(String transcode, String inputParams,
+    public Result doDispatcher(String transcode, String inputParams,
             String language) {
         String result = null;
         String userId = null;
+        String tokenId = null;
         ReturnMessage rm = new ReturnMessage();
         try {
 
@@ -44,7 +48,7 @@ public class DispatcherImpl implements IDispatcher {
                 Map.class);
 
             // 获取入参中token
-            String tokenId = String.valueOf(map.get("token"));
+            tokenId = String.valueOf(map.get("token"));
 
             // token为空
             if (StringUtils.isNotBlank(tokenId) && !"null".equals(tokenId)) {
@@ -73,8 +77,7 @@ public class DispatcherImpl implements IDispatcher {
                     || "805183".equals(transcode) || "618920".equals(transcode)
                     || "618922".equals(transcode) || "805154".equals(transcode)
                     || "612050".equals(transcode) || "623800".equals(transcode)
-                    || "625800".equals(transcode)
-                    || "630051".equals(transcode)) {// 618920
+                    || "625800".equals(transcode) || "630051".equals(transcode)) {// 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
 
@@ -119,8 +122,8 @@ public class DispatcherImpl implements IDispatcher {
 
                     // 返回token添加给前端
                     resultData = resultData.substring(0,
-                        resultData.lastIndexOf("}")) + ", \"token\":\""
-                            + tokenId + "\"}";
+                        resultData.lastIndexOf("}"))
+                            + ", \"token\":\"" + tokenId + "\"}";
 
                 }
             }
@@ -132,8 +135,9 @@ public class DispatcherImpl implements IDispatcher {
             }
             rm.setData(data);
         } catch (Exception e) {
-            System.out.println("Exception Post-f:" + e.getMessage());
-
+            logger.error("***************请求入参信息:transcode[" + transcode
+                    + "],inputParams[" + inputParams + "]");
+            logger.error("***************请求错误信息:" + e.getMessage());
             if (e instanceof TokenException) {
                 rm.setErrorCode(EErrorCode.TOKEN_ERR.getCode());
                 rm.setErrorBizCode(((TokenException) e).getErrorCode());
@@ -164,6 +168,6 @@ public class DispatcherImpl implements IDispatcher {
         } finally {
             result = JsonUtils.object2Json(rm);
         }
-        return result;
+        return new Result(tokenId, userId, result, rm.getErrorCode());
     }
 }

@@ -9,5 +9,5 @@ public interface IDispatcher {
      * @create: 2015-5-19 上午8:53:55 miyb
      * @history:
      */
-    String doDispatcher(String transcode, String inputParams, String language);
+    Result doDispatcher(String transcode, String inputParams, String language);
 }
