@@ -14,42 +14,6 @@ public class BizConnecter {
 
     public static final String YES = "0";
 
-    public static final String USER_URL = PropertiesUtil.Config.USER_URL;
-
-    public static final String ACCOUNT_URL = PropertiesUtil.Config.ACCOUNT_URL;
-
-    public static final String CERTI_URL = PropertiesUtil.Config.CERTI_URL;
-
-    public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
-
-    public static final String FORUM_URL = PropertiesUtil.Config.FORUM_URL;
-
-    public static final String GAME_URL = PropertiesUtil.Config.GAME_URL;
-
-    public static final String ZHPAY_URL = PropertiesUtil.Config.ZHPAY_URL;
-
-    public static final String MALL_URL = PropertiesUtil.Config.MALL_URL;
-
-    public static final String RIDE_URL = PropertiesUtil.Config.RIDE_URL;
-
-    public static final String LOAN_URL = PropertiesUtil.Config.LOAN_URL;
-
-    public static final String TOUR_URL = PropertiesUtil.Config.TOUR_URL;
-
-    public static final String PIPE_URL = PropertiesUtil.Config.PIPE_URL;
-
-    public static final String DZT_URL = PropertiesUtil.Config.DZT_URL;
-
-    public static final String ACTIVITY_URL = PropertiesUtil.Config.ACTIVITY_URL;
-
-    public static final String SERVICE_URL = PropertiesUtil.Config.SERVICE_URL;
-
-    public static final String HEALTH_URL = PropertiesUtil.Config.HEALTH_URL;
-
-    public static final String YC_MALL_URL = PropertiesUtil.Config.YC_MALL_URL;
-
-    public static final String GYM_URL = PropertiesUtil.Config.GYM_URL;
-
     public static final String YLQ_URL = PropertiesUtil.Config.YLQ_URL;
 
     public static String getBizData(String code, String json) {
@@ -79,45 +43,7 @@ public class BizConnecter {
     }
 
     public static String getPostUrl(String code) {
-        String postUrl = null;
-        if (code.startsWith("805") || code.startsWith("806")
-                || code.startsWith("807") || code.startsWith("001")) {
-            postUrl = USER_URL;
-        } else if (code.startsWith("802") || code.startsWith("002")) {
-            postUrl = ACCOUNT_URL;
-        } else if (code.startsWith("803")) {
-            postUrl = GAME_URL;
-        } else if (code.startsWith("804")) {
-            postUrl = SMS_URL;
-        } else if (code.startsWith("808")) {
-            postUrl = YC_MALL_URL;
-        } else if (code.startsWith("610")) {
-            postUrl = FORUM_URL;
-        } else if (code.startsWith("615")) {
-            postUrl = ZHPAY_URL;
-        } else if (code.startsWith("616")) {
-            postUrl = RIDE_URL;
-        } else if (code.startsWith("617")) {
-            postUrl = LOAN_URL;
-        } else if (code.startsWith("618")) {
-            postUrl = TOUR_URL;
-        } else if (code.startsWith("619")) {
-            postUrl = PIPE_URL;
-        } else if (code.startsWith("620")) {
-            postUrl = DZT_URL;
-        } else if (code.startsWith("660")) {
-            postUrl = ACTIVITY_URL;
-        } else if (code.startsWith("612")) {
-            postUrl = SERVICE_URL;
-        } else if (code.startsWith("621")) {
-            postUrl = HEALTH_URL;
-        } else if (code.startsWith("622")) {
-            postUrl = GYM_URL;
-        } else if (code.startsWith("623")) {
-            postUrl = YLQ_URL;
-        } else if (code.startsWith("798")) {
-            postUrl = CERTI_URL;
-        }
+        String postUrl = YLQ_URL;
         return postUrl;
     }
 }
