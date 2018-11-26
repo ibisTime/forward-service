@@ -65,13 +65,10 @@ public class DispatcherImpl implements IDispatcher {
                 userId);
 
             // 登录接口，组装token返回
-            if ("805041".equals(transcode) || "805043".equals(transcode)
-                    || "805044".equals(transcode) || "805050".equals(transcode)
-                    || "805151".equals(transcode) || "805152".equals(transcode)
-                    || "805170".equals(transcode) || "805182".equals(transcode)
-                    || "805183".equals(transcode) || "618920".equals(transcode)
-                    || "618922".equals(transcode) || "805154".equals(transcode)
-                    || "612050".equals(transcode)) {// 618920
+            if ("805041".equals(transcode) || "805044".equals(transcode)
+                    || "805045".equals(transcode) || "805046".equals(transcode)
+                    || "805050".equals(transcode)
+                    || "805051".equals(transcode)) {
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
                     Map.class);
 
