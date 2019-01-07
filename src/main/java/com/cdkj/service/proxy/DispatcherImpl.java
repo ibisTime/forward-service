@@ -68,6 +68,8 @@ public class DispatcherImpl implements IDispatcher {
             // 验证通过后转发接口
             String resultData = BizConnecter.getBizData(transcode, inputParams,
                 userId, language);
+            // String resultData =
+            // "{\"errorCode\":\"0\",\"errorInfo\":\"成功\",\"data\":{\"userId\":\"U20190120152535656570836\"}}";
 
             // 登录接口，组装token返回
             if ("805041".equals(transcode) || "805043".equals(transcode)

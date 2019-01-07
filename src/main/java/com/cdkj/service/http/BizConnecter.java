@@ -15,7 +15,7 @@ public class BizConnecter {
 
     public static final String YES = "0";
 
-    public static final String HMONEY_URL = PropertiesUtil.Config.HMONEY_URL;
+    public static final String WALLET_URL = PropertiesUtil.Config.WALLET_URL;
 
     public static final String CONTENT_TYPE = "Content-Type";
 
@@ -57,6 +57,6 @@ public class BizConnecter {
     }
 
     public static String getPostUrl(String code) {
-        return PropertiesUtil.Config.HMONEY_URL;
+        return PropertiesUtil.Config.WALLET_URL;
     }
 }

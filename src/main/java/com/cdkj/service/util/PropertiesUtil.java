@@ -23,6 +23,6 @@ public class PropertiesUtil {
     }
 
     public static final class Config {
-        public static String HMONEY_URL = props.getProperty("HMONEY_URL");
+        public static String WALLET_URL = props.getProperty("WALLET_URL");
     }
 }
