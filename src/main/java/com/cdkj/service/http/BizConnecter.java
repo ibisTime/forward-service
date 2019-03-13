@@ -15,13 +15,7 @@ public class BizConnecter {
 
     public static final String YES = "0";
 
-    public static final String CERTI_URL = PropertiesUtil.Config.CERTI_URL;
-
-    public static final String SMS_URL = PropertiesUtil.Config.SMS_URL;
-
-    public static final String COIN_URL = PropertiesUtil.Config.COIN_URL;
-
-    public static final String CORE_URL = PropertiesUtil.Config.CORE_URL;
+    public static final String WALLET_URL = PropertiesUtil.Config.WALLET_URL;
 
     public static String getBizData(String code, String json, String operator) {
         String data = null;
@@ -53,17 +47,6 @@ public class BizConnecter {
     }
 
     public static String getPostUrl(String code) {
-        String postUrl = null;
-        if (code.startsWith("804")) {
-            postUrl = SMS_URL;
-        } else if (code.startsWith("623") || code.startsWith("625")
-                || code.startsWith("805") || code.startsWith("802")) {
-            postUrl = COIN_URL;
-        } else if (code.startsWith("660") || code.startsWith("801")) {
-            postUrl = CORE_URL;
-        } else if (code.startsWith("798")) {
-            postUrl = CERTI_URL;
-        }
-        return postUrl;
+        return WALLET_URL;
     }
 }
