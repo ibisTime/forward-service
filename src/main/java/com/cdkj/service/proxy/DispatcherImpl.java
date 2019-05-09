@@ -1,13 +1,5 @@
 package com.cdkj.service.proxy;
 
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.cdkj.service.enums.EClient;
 import com.cdkj.service.enums.EErrorCode;
 import com.cdkj.service.exception.BizException;
@@ -18,6 +10,12 @@ import com.cdkj.service.http.JsonUtils;
 import com.cdkj.service.token.ITokenDAO;
 import com.cdkj.service.token.Jwt;
 import com.cdkj.service.token.Token;
+import java.util.Map;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class DispatcherImpl implements IDispatcher {
@@ -35,8 +33,7 @@ public class DispatcherImpl implements IDispatcher {
     @Override
     @SuppressWarnings("unchecked")
     @Transactional
-    public Result doDispatcher(String transcode, String inputParams,
-            String language) {
+    public Result doDispatcher(String transcode, String inputParams, String language) {
         String result = null;
         String userId = null;
         String tokenId = null;
@@ -44,8 +41,7 @@ public class DispatcherImpl implements IDispatcher {
         try {
 
             // 解析入参
-            Map<String, Object> map = JsonUtils.json2Bean(inputParams,
-                Map.class);
+            Map<String, Object> map = JsonUtils.json2Bean(inputParams, Map.class);
 
             // 获取入参中token
             tokenId = String.valueOf(map.get("token"));
@@ -62,26 +58,30 @@ public class DispatcherImpl implements IDispatcher {
                 if (null == token || !tokenId.equals(token.getTokenId())) {
                     throw new TokenException("xn000000", "token失效，请重新登录");
                 }
-
             }
 
             // 验证通过后转发接口
-            String resultData = BizConnecter.getBizData(transcode, inputParams,
-                userId, language);
+            String resultData = BizConnecter.getBizData(transcode, inputParams, userId, language);
             // String resultData =
             // "{\"errorCode\":\"0\",\"errorInfo\":\"成功\",\"data\":{\"userId\":\"U20190120152535656570836\"}}";
 
             // 登录接口，组装token返回
-            if ("805041".equals(transcode) || "805043".equals(transcode)
-                    || "805044".equals(transcode) || "805050".equals(transcode)
-                    || "805151".equals(transcode) || "805152".equals(transcode)
-                    || "805170".equals(transcode) || "805182".equals(transcode)
-                    || "805183".equals(transcode) || "618920".equals(transcode)
-                    || "618922".equals(transcode) || "805154".equals(transcode)
-                    || "612050".equals(transcode) || "623800".equals(transcode)
-                    || "625800".equals(transcode) || "630051".equals(transcode)) {// 618920
-                Map<String, Object> resultMap = JsonUtils.json2Bean(resultData,
-                    Map.class);
+            if ("805041".equals(transcode)
+                    || "805043".equals(transcode)
+                    || "805044".equals(transcode)
+                    || "805050".equals(transcode)
+                    || "805151".equals(transcode)
+                    || "805152".equals(transcode)
+                    || "805170".equals(transcode)
+                    || "805182".equals(transcode)
+                    || "805183".equals(transcode)
+                    || "618920".equals(transcode)
+                    || "618922".equals(transcode)
+                    || "805154".equals(transcode)
+                    || "612050".equals(transcode)
+                    || "623800".equals(transcode)
+                    || "630051".equals(transcode)) { // 618920
+                Map<String, Object> resultMap = JsonUtils.json2Bean(resultData, Map.class);
 
                 String client = null;
                 if (null != map.get("client")) {
@@ -108,8 +108,7 @@ public class DispatcherImpl implements IDispatcher {
                                 Jwt.getUserId(tokenId);
                             } catch (Exception e) {
                                 // 生成新的token
-                                tokenId = Jwt.getJwt(userId,
-                                    1000 * 3600 * 24 * 7);
+                                tokenId = Jwt.getJwt(userId, 1000 * 3600 * 24 * 7);
                                 // 保存token至redis
                                 tokenDAO.saveToken(new Token(userId, tokenId));
                             }
@@ -123,10 +122,11 @@ public class DispatcherImpl implements IDispatcher {
                     }
 
                     // 返回token添加给前端
-                    resultData = resultData.substring(0,
-                        resultData.lastIndexOf("}"))
-                            + ", \"token\":\"" + tokenId + "\"}";
-
+                    resultData =
+                            resultData.substring(0, resultData.lastIndexOf("}"))
+                                    + ", \"token\":\""
+                                    + tokenId
+                                    + "\"}";
                 }
             }
             Object data = JsonUtils.json2Bean(resultData, Object.class);
@@ -137,8 +137,9 @@ public class DispatcherImpl implements IDispatcher {
             }
             rm.setData(data);
         } catch (Exception e) {
-            logger.error("***************请求入参信息:transcode[" + transcode
-                    + "],inputParams[" + inputParams + "]");
+            logger.error(
+                    "***************请求入参信息:transcode[" + transcode + "],inputParams[" + inputParams
+                            + "]");
             logger.error("***************请求错误信息:" + e.getMessage());
             if (e instanceof TokenException) {
                 rm.setErrorCode(EErrorCode.TOKEN_ERR.getCode());

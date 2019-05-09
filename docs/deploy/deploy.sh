@@ -1,10 +1,10 @@
 
 #!/usr/bin/expect
 
-set tomcat_path "/mnt/www/hmoney/tomcat_forward_service"
+set tomcat_path "/mnt/www/wu-wallet/tomcat_forward_service"
 set war_name "forward-service"
-set host_ip "120.26.6.213"
-set host_pwd "cdkj123456Q"
+set host_ip "47.99.163.139"
+set host_pwd "cdkjqwertyQ01"
 
 ######## 1.传输文件至服务器根目录 ########
 spawn scp ./${war_name}.war root@${host_ip}:~/
