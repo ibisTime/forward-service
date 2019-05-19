@@ -80,6 +80,8 @@ public class DispatcherImpl implements IDispatcher {
                     || "805154".equals(transcode)
                     || "612050".equals(transcode)
                     || "623800".equals(transcode)
+                    || "805045".equals(transcode)
+                    || "805046".equals(transcode)
                     || "630051".equals(transcode)) { // 618920
                 Map<String, Object> resultMap = JsonUtils.json2Bean(resultData, Map.class);
 
