@@ -1,13 +1,11 @@
 package com.cdkj.service.http;
 
-import java.util.Properties;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-
 import com.cdkj.service.exception.BizException;
 import com.cdkj.service.util.PropertiesUtil;
 import com.cdkj.service.util.RegexUtils;
+import java.util.Properties;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 public class BizConnecter {
 
@@ -21,8 +19,7 @@ public class BizConnecter {
 
     public static final String ACCEPT_LANGUAGE = "Accept-Language";
 
-    public static String getBizData(String code, String json, String operator,
-            String language) {
+    public static String getBizData(String code, String json, String operator, String language) {
         String data = null;
         String resJson = null;
         try {
@@ -36,18 +33,25 @@ public class BizConnecter {
             Properties requestProperties = new Properties();
             requestProperties.setProperty(ACCEPT_LANGUAGE, language);
 
-            resJson = PostSimulater.requestPostForm(getPostUrl(code),
-                formProperties, requestProperties);
+            resJson = PostSimulater
+                    .requestPostForm(getPostUrl(code), formProperties, requestProperties);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new BizException("Biz000", "链接请求超时，请联系管理员");
+            throw new BizException("Biz000", "服务器开小差了，请稍后重试。");
         }
         // 开始解析响应json
         String errorCode = RegexUtils.find(resJson, "errorCode\":\"(.+?)\"", 1);
         String errorInfo = RegexUtils.find(resJson, "errorInfo\":\"(.+?)\"", 1);
-        logger.info("request:code<" + code + ">  json<" + json
-                + ">\nresponse:errorCode<" + errorCode + ">  errorInfo<"
-                + errorInfo + ">");
+        logger.info(
+                "request:code<"
+                        + code
+                        + ">  json<"
+                        + json
+                        + ">\nresponse:errorCode<"
+                        + errorCode
+                        + ">  errorInfo<"
+                        + errorInfo
+                        + ">");
         if (YES.equalsIgnoreCase(errorCode)) {
             data = RegexUtils.find(resJson, "data\":(.*)\\}", 1);
         } else {
