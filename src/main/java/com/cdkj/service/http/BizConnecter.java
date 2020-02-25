@@ -1,13 +1,11 @@
 package com.cdkj.service.http;
 
-import java.util.Properties;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-
 import com.cdkj.service.exception.BizException;
 import com.cdkj.service.util.PropertiesUtil;
 import com.cdkj.service.util.RegexUtils;
+import java.util.Properties;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 public class BizConnecter {
 
@@ -52,15 +50,12 @@ public class BizConnecter {
 
     public static String getPostUrl(String code) {
         String postUrl = null;
-        if (code.equals("630450")) {
-            postUrl = HTWT_URL;
-        } else if (code.startsWith("804")) {
+        if (code.startsWith("804")) {
             postUrl = SMS_URL;
-        } else if (code.startsWith("6304")) {
-            postUrl = CHE_URL;
         } else {
             postUrl = HTWT_URL;
         }
+        
         return postUrl;
     }
 }
