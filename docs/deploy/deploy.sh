@@ -3,11 +3,11 @@
 
 set tomcat_path "/mnt/www/htwt/tomcat_forward_service"
 set war_name "forward-service"
-set host_ip "39.104.89.43"
-set host_pwd "htwT2018"
+set host_ip "47.110.249.120"
+set host_pwd "Enuo0928"
 
 ######## 1.传输文件至服务器根目录 ########
-spawn scp ./${war_name}.war root@${host_ip}:~/
+spawn scp ../../target/${war_name}.war root@${host_ip}:~/
 expect "*password:"
 send "${host_pwd}\r"
 set timeout 300
